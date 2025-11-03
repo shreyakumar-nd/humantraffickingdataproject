@@ -224,3 +224,34 @@ blockquote {
     background: linear-gradient(90deg, transparent, #333333, transparent);
     margin: 4rem 0;
 }
+
+/* NAVIGATION LINKS SECTION */
+.link-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.link-card {
+    background-color: #111;      
+    color: #ffffff;              
+    padding: 1rem 2rem;
+    border: 1px solid #444;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.link-card:hover {
+    background-color: #ffffff;   
+    color: #000000;              
+    border-color: #ffffff;
+}
+
+/* Center the "Explore the Data" header */
+section .content h2 {
+  text-align: center;
+}
