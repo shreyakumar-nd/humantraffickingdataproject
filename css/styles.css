@@ -77,6 +77,59 @@ p {
     margin: 0 auto;
 }
 
+/* CALENDAR VISUAL */
+.calendar-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    margin-top: 4rem;
+    align-items: center;
+}
+
+.year {
+    text-align: center;
+}
+
+.year h4 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+}
+
+.months {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+    justify-items: center;
+}
+
+.month {
+    width: 140px;
+    height: 120px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    font-size: 1rem;
+    font-weight: 400;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.month.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+@media (max-width: 600px) {
+    .months {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 
 /* FADE IN ANIMATIONS */
 .fade-in {
