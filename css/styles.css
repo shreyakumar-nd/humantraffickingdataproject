@@ -184,6 +184,29 @@ p {
     line-height: 1.6;
 }
 
+/* VERTICAL PROFILE CARDS - Add this to your styles.css */
+.profile-card-vertical {
+    background: #252525;
+    padding: 2.5rem;
+    border-left: 4px solid #666666;
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+    max-width: 900px;
+}
+
+.profile-card-vertical:hover {
+    border-left-color: #ffffff;
+    transform: translateX(5px);
+}
+
+/* Keep the original profile-grid for sections that need horizontal layout */
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
 /* STICKY VISUALIZATION SECTION */
 .sticky-section {
     position: relative;
