@@ -23,11 +23,46 @@ function updateRollingNumber() {
     numberEl.textContent = `[${currentNumber}]`;
 }
 
+// --- CALENDAR FADE-IN VISUAL ---
+document.addEventListener("DOMContentLoaded", () => {
+    const years = document.querySelectorAll(".year");
+
+    // Generate 12 month boxes per year
+    years.forEach(year => {
+        const monthsContainer = year.querySelector(".months");
+        const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+                            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        monthNames.forEach(name => {
+            const monthEl = document.createElement("div");
+            monthEl.className = "month";
+            monthEl.textContent = name;
+            monthsContainer.appendChild(monthEl);
+        });
+    });
+
+    // Fade in months as they scroll into view
+    function checkCalendars() {
+        const months = document.querySelectorAll(".month");
+        months.forEach(m => {
+            const rect = m.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            if (rect.top < windowHeight * 0.85) {
+                m.classList.add("visible");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", checkCalendars);
+    checkCalendars();
+});
+
+
 // SCROLL EVENTS
 window.addEventListener('scroll', () => {
     checkFadeIn();
     updateRollingNumber();
 });
+
 
 // Run on load
 checkFadeIn();
