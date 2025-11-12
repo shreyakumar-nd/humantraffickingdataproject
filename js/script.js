@@ -64,5 +64,62 @@ window.addEventListener('scroll', () => {
 });
 
 
+// DOT MATRIX VISUALIZATION - Generate 100 dots
+function initializeDotMatrix() {
+    const dotGrid = document.querySelector('.dot-grid');
+    
+    if (!dotGrid) {
+        console.log('Dot grid not found');
+        return;
+    }
+    
+    console.log('Initializing dot matrix...');
+    
+    // Clear any existing dots
+    dotGrid.innerHTML = '';
+    
+    // First 50 dots are runaways (white)
+    for (let i = 1; i <= 50; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'dot runaway';
+        dotGrid.appendChild(dot);
+    }
+    
+    // Next 45 dots are "knew trafficker" (gray)
+    for (let i = 51; i <= 95; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'dot knew-trafficker';
+        dotGrid.appendChild(dot);
+    }
+    
+    // Remaining 5 dots are default (neither category)
+    for (let i = 96; i <= 100; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'dot';
+        dotGrid.appendChild(dot);
+    }
+    
+    console.log('Dot matrix initialized with', dotGrid.children.length, 'dots');
+}
+
+// Run when DOM is fully loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeDotMatrix);
+} else {
+    // DOM already loaded, run immediately
+    initializeDotMatrix();
+}
+
+// Also run on window load as backup
+window.addEventListener('load', initializeDotMatrix);
+
+
+
+
+
+
+
+
+
 // Run on load
 checkFadeIn();
