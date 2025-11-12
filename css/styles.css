@@ -255,3 +255,13 @@ blockquote {
 section .content h2 {
   text-align: center;
 }
+
+/* Spiderweb Visualization Canvas */
+#webVisualization {
+    width: 100%;
+    height: 500px;
+    display: block;
+    background: radial-gradient(circle at center, #111 0%, #000 100%);
+    border: 1px solid #222;
+    margin-top: 2rem;
+}
