@@ -84,8 +84,12 @@ p {
     border: 1px solid #333;
     border-radius: 8px;
     background-color: #111;
-    background-size: cover;
-    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    font-size: 1rem;
+    font-weight: 400;
     opacity: 0;
     transform: scale(0.95);
     transition: opacity 0.8s ease, transform 0.8s ease;
@@ -95,13 +99,6 @@ p {
 .month.visible {
     opacity: 1;
     transform: scale(1);
-}
-
-.year h4 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: #ffffff;
-    letter-spacing: 1px;
 }
 
 .calendar-visual {
