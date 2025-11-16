@@ -23,24 +23,28 @@ function updateRollingNumber() {
     numberEl.textContent = `[${currentNumber}]`;
 }
 
-// --- CALENDAR FADE-IN VISUAL ---
+// --- CALENDAR FADE-IN WITH IMAGE BACKGROUNDS ---
 document.addEventListener("DOMContentLoaded", () => {
     const years = document.querySelectorAll(".year");
 
-    // Generate 12 month boxes per year
+    // Month names & corresponding image file names
+    const months = [
+        { name: "Jan", file: "calendar-jan.png" },
+    ];
+
+    // Generate months with background images for each year
     years.forEach(year => {
         const monthsContainer = year.querySelector(".months");
-        const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
-                            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        monthNames.forEach(name => {
+        months.forEach(m => {
             const monthEl = document.createElement("div");
             monthEl.className = "month";
-            monthEl.textContent = name;
+            monthEl.style.backgroundImage = `url('visuals/${m.file}')`;
+            monthEl.setAttribute("aria-label", `${m.name} ${year.dataset.year}`);
             monthsContainer.appendChild(monthEl);
         });
     });
 
-    // Fade in months as they scroll into view
+    // Fade-in logic when months scroll into view
     function checkCalendars() {
         const months = document.querySelectorAll(".month");
         months.forEach(m => {
@@ -55,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", checkCalendars);
     checkCalendars();
 });
+
 
 
 // SCROLL EVENTS
