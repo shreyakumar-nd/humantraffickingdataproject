@@ -78,21 +78,22 @@ p {
 }
 
 /* CALENDAR VISUAL */
+.months {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 columns */
+    gap: 0.5rem; /* smaller gap between months */
+}
+
 .month {
-    width: 140px;
-    height: 120px;
+    width: 80px;   /* smaller width */
+    height: 70px;  /* smaller height */
     border: 1px solid #333;
-    border-radius: 8px;
+    border-radius: 6px;
     background-color: #111;
     opacity: 0;
     transform: scale(0.95);
     transition: opacity 0.8s ease, transform 0.8s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-}
-
-.month.visible {
-    opacity: 1;
-    transform: scale(1);
+    box-shadow: 0 1px 5px rgba(0,0,0,0.3);
 }
 
 .has-image {
@@ -101,10 +102,9 @@ p {
     background-repeat: no-repeat;
 }
 
-.months {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
+.month.visible {
+    opacity: 1;
+    transform: scale(1);
 }
 
 .calendar-visual {
