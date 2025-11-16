@@ -123,3 +123,24 @@ window.addEventListener('load', initializeDotMatrix);
 
 // Run on load
 checkFadeIn();
+
+// hospitality visualization
+(function () {
+    const pictograph = document.getElementById('pictograph');
+    const total = 100;
+    const filled = 75;
+
+    for (let i = 0; i < total; i++) {
+      const icon = document.createElement('div');
+      icon.textContent = i < filled ? '👤' : '⚪';
+      pictograph.appendChild(icon);
+    }
+
+    // reveal animation on scroll
+    window.addEventListener('scroll', () => {
+      const rect = pictograph.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) {
+        pictograph.classList.add('show');
+      }
+    });
+  })();
