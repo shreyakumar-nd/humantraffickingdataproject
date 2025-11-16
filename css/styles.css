@@ -80,10 +80,11 @@ p {
 /* CALENDAR VISUAL */
 .calendar-visual {
     display: flex;
+    flex-wrap: wrap;      /* allow multiple rows */
     justify-content: center;
     margin: 4rem auto;
     width: 100%;
-    max-width: 1200px; /* allow 6 columns */
+    max-width: 1200px;
 }
 
 .months {
