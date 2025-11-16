@@ -24,42 +24,28 @@ function updateRollingNumber() {
 }
 
 // --- CALENDAR FADE-IN WITH IMAGE BACKGROUNDS ---
-// --- CALENDAR FADE-IN WITH JAN ONLY ---
+// --- CALENDAR FADE-IN (ALL MONTHS USE JAN IMAGE) ---
 document.addEventListener("DOMContentLoaded", () => {
     const years = document.querySelectorAll(".year");
 
-    // Months, with only January using an image
+    // 12 months — all referencing the same image now
     const months = [
-        { name: "Jan", img: "calendar-jan.png" },
-        { name: "Feb", img: null },
-        { name: "Mar", img: null },
-        { name: "Apr", img: null },
-        { name: "May", img: null },
-        { name: "Jun", img: null },
-        { name: "Jul", img: null },
-        { name: "Aug", img: null },
-        { name: "Sep", img: null },
-        { name: "Oct", img: null },
-        { name: "Nov", img: null },
-        { name: "Dec", img: null }
+        "Jan","Feb","Mar","Apr","May","Jun",
+        "Jul","Aug","Sep","Oct","Nov","Dec"
     ];
 
-    // Generate calendar boxes
     years.forEach(year => {
         const monthsContainer = year.querySelector(".months");
 
-        months.forEach(m => {
+        months.forEach(name => {
             const monthEl = document.createElement("div");
-            monthEl.className = "month";
+            monthEl.className = "month has-image";
 
-            // Only January gets a background image
-            if (m.img) {
-                monthEl.style.backgroundImage = `url('visuals/${m.img}')`;
-                monthEl.style.backgroundSize = "cover";
-                monthEl.style.backgroundPosition = "center";
-            } else {
-                monthEl.textContent = m.name;  // blank square with text label
-            }
+            // Use the same image for all months
+            monthEl.style.backgroundImage = `url('visuals/calendar-jan.png')`;
+            monthEl.style.backgroundSize = "contain";
+            monthEl.style.backgroundRepeat = "no-repeat";
+            monthEl.style.backgroundPosition = "center";
 
             monthsContainer.appendChild(monthEl);
         });
@@ -69,9 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function checkCalendars() {
         document.querySelectorAll(".month").forEach(m => {
             const rect = m.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-
-            if (rect.top < windowHeight * 0.85) {
+            if (rect.top < window.innerHeight * 0.85) {
                 m.classList.add("visible");
             }
         });
