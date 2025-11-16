@@ -118,20 +118,6 @@ p {
     transform: scale(1);
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-    .months {
-        grid-template-columns: repeat(4, 1fr);
-    }
-    .month { width: 60px; height: 50px; }
-}
-
-@media (max-width: 600px) {
-    .months {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .month { width: 50px; height: 40px; }
-}
 
 
 /* FADE IN ANIMATIONS */
