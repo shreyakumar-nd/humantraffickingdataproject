@@ -24,32 +24,15 @@ function updateRollingNumber() {
 }
 
 // --- CALENDAR FADE-IN WITH IMAGE BACKGROUNDS ---
-// --- CALENDAR FADE-IN (ALL MONTHS USE JAN IMAGE) ---
 document.addEventListener("DOMContentLoaded", () => {
-    const years = document.querySelectorAll(".year");
+    const monthsContainer = document.querySelector(".months");
 
-    // 12 months — all referencing the same image now
-    const months = [
-        "Jan","Feb","Mar","Apr","May","Jun",
-        "Jul","Aug","Sep","Oct","Nov","Dec"
-    ];
-
-    years.forEach(year => {
-        const monthsContainer = year.querySelector(".months");
-
-        months.forEach(name => {
-            const monthEl = document.createElement("div");
-            monthEl.className = "month has-image";
-
-            // Use the same image for all months
-            monthEl.style.backgroundImage = `url('visuals/calendar.jpg')`;
-            monthEl.style.backgroundSize = "contain";
-            monthEl.style.backgroundRepeat = "no-repeat";
-            monthEl.style.backgroundPosition = "center";
-
-            monthsContainer.appendChild(monthEl);
-        });
-    });
+    // 48 months = 4 years × 12 months
+    for (let i = 0; i < 48; i++) {
+        const monthEl = document.createElement("div");
+        monthEl.classList.add("month", "has-image");
+        monthsContainer.appendChild(monthEl);
+    }
 
     // Fade-in on scroll
     function checkCalendars() {
