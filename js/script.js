@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
             monthEl.className = "month has-image";
 
             // Use the same image for all months
-            monthEl.style.backgroundImage = `url('visuals/calendar-jan.png')`;
+            monthEl.style.backgroundImage = `url('visuals/calendar.jpg')`;
             monthEl.style.backgroundSize = "contain";
             monthEl.style.backgroundRepeat = "no-repeat";
             monthEl.style.backgroundPosition = "center";
