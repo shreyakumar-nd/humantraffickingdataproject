@@ -24,32 +24,53 @@ function updateRollingNumber() {
 }
 
 // --- CALENDAR FADE-IN WITH IMAGE BACKGROUNDS ---
+// --- CALENDAR FADE-IN WITH JAN ONLY ---
 document.addEventListener("DOMContentLoaded", () => {
     const years = document.querySelectorAll(".year");
 
-    // Month names & corresponding image file names
+    // Months, with only January using an image
     const months = [
-        { name: "Jan", file: "calendar-jan.png" },
+        { name: "Jan", img: "calendar-jan.png" },
+        { name: "Feb", img: null },
+        { name: "Mar", img: null },
+        { name: "Apr", img: null },
+        { name: "May", img: null },
+        { name: "Jun", img: null },
+        { name: "Jul", img: null },
+        { name: "Aug", img: null },
+        { name: "Sep", img: null },
+        { name: "Oct", img: null },
+        { name: "Nov", img: null },
+        { name: "Dec", img: null }
     ];
 
-    // Generate months with background images for each year
+    // Generate calendar boxes
     years.forEach(year => {
         const monthsContainer = year.querySelector(".months");
+
         months.forEach(m => {
             const monthEl = document.createElement("div");
             monthEl.className = "month";
-            monthEl.style.backgroundImage = `url('visuals/${m.file}')`;
-            monthEl.setAttribute("aria-label", `${m.name} ${year.dataset.year}`);
+
+            // Only January gets a background image
+            if (m.img) {
+                monthEl.style.backgroundImage = `url('visuals/${m.img}')`;
+                monthEl.style.backgroundSize = "cover";
+                monthEl.style.backgroundPosition = "center";
+            } else {
+                monthEl.textContent = m.name;  // blank square with text label
+            }
+
             monthsContainer.appendChild(monthEl);
         });
     });
 
-    // Fade-in logic when months scroll into view
+    // Fade-in on scroll
     function checkCalendars() {
-        const months = document.querySelectorAll(".month");
-        months.forEach(m => {
+        document.querySelectorAll(".month").forEach(m => {
             const rect = m.getBoundingClientRect();
             const windowHeight = window.innerHeight;
+
             if (rect.top < windowHeight * 0.85) {
                 m.classList.add("visible");
             }
@@ -59,7 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", checkCalendars);
     checkCalendars();
 });
-
 
 
 // SCROLL EVENTS
