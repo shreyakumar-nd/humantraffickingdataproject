@@ -78,15 +78,12 @@ p {
 }
 
 /* CALENDAR VISUAL */
-/* CALENDAR VISUAL */
 .calendar-visual {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    width: 100%;       /* allow full width */
-    max-width: 1200px; /* wider container for 6 columns */
+    justify-content: center;
     margin: 4rem auto;
+    width: 100%;
+    max-width: 1200px; /* allow 6 columns */
 }
 
 .months {
@@ -98,8 +95,8 @@ p {
 }
 
 .month {
-    width: 70px;   /* smaller width */
-    height: 60px;  /* smaller height */
+    width: 70px;
+    height: 60px;
     border: 1px solid #333;
     border-radius: 6px;
     background-color: #111;
@@ -110,6 +107,7 @@ p {
 }
 
 .has-image {
+    background-image: url('visuals/calendar.jpg'); /* same image for now */
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -120,25 +118,19 @@ p {
     transform: scale(1);
 }
 
-/* Responsive for smaller screens */
+/* Responsive */
 @media (max-width: 900px) {
     .months {
         grid-template-columns: repeat(4, 1fr);
     }
-    .month {
-        width: 60px;
-        height: 50px;
-    }
+    .month { width: 60px; height: 50px; }
 }
 
 @media (max-width: 600px) {
     .months {
         grid-template-columns: repeat(2, 1fr);
     }
-    .month {
-        width: 50px;
-        height: 40px;
-    }
+    .month { width: 50px; height: 40px; }
 }
 
 
