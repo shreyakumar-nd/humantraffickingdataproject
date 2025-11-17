@@ -29,72 +29,101 @@ window.addEventListener('scroll', () => {
     updateRollingNumber();
 });
 
-// =============================
-// DIGITAL GRID VISUALIZATION
-// =============================
+// ===============================
+// EXPANDING WEB VISUALIZATION
+// ===============================
+const webCanvas = document.getElementById("expandingWeb");
 
-const gridCanvas = document.getElementById("gridVisualization");
-if (gridCanvas) {
-    const gtx = gridCanvas.getContext("2d");
-    let w, h;
+if (webCanvas) {
+    const ctx = webCanvas.getContext("2d");
 
-    function resizeGrid() {
-        w = gridCanvas.offsetWidth;
-        h = gridCanvas.offsetHeight;
-        gridCanvas.width = w;
-        gridCanvas.height = h;
+    function resizeWebCanvas() {
+        webCanvas.width = webCanvas.offsetWidth;
+        webCanvas.height = webCanvas.offsetHeight;
     }
-    resizeGrid();
-    window.addEventListener("resize", resizeGrid);
 
-    // Create a fixed grid of dots
-    const cols = 40;
-    const rows = 25;
-    let dots = [];
+    resizeWebCanvas();
+    window.addEventListener("resize", resizeWebCanvas);
 
-    function initDots() {
-        dots = [];
-        for (let y = 0; y < rows; y++) {
-            for (let x = 0; x < cols; x++) {
-                dots.push({
-                    x: (x + 0.5) * (w / cols),
-                    y: (y + 0.5) * (h / rows),
-                    lit: false
-                });
+    // Generate node positions based on density (0 = tiny, 1 = huge)
+    function generateNodes(density) {
+        const nodes = [];
+        const count = Math.floor(4 + density * 350); // 4 → ~354 (≈900% growth)
+
+        for (let i = 0; i < count; i++) {
+            const angle = Math.random() * Math.PI * 2;
+            const radius = (webCanvas.width * 0.05) + density * (webCanvas.width * 0.45) * Math.random();
+            const x = webCanvas.width / 2 + Math.cos(angle) * radius;
+            const y = webCanvas.height / 2 + Math.sin(angle) * radius;
+            nodes.push({ x, y });
+        }
+
+        return nodes;
+    }
+
+    // Generate lightweight edges
+    function generateEdges(nodes, density) {
+        const edges = [];
+        const threshold = 40 + density * 120;
+
+        for (let i = 0; i < nodes.length; i++) {
+            for (let j = i + 1; j < nodes.length; j++) {
+                const dx = nodes[i].x - nodes[j].x;
+                const dy = nodes[i].y - nodes[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < threshold) {
+                    edges.push([nodes[i], nodes[j]]);
+                }
             }
         }
+        return edges;
     }
 
-    function drawGrid(progress) {
-        gtx.clearRect(0, 0, w, h);
+    function drawWeb(density) {
+        ctx.clearRect(0, 0, webCanvas.width, webCanvas.height);
 
-        const litCount = Math.floor(dots.length * progress);
+        const nodes = generateNodes(density);
+        const edges = generateEdges(nodes, density);
 
-        for (let i = 0; i < dots.length; i++) {
-            const d = dots[i];
-            const isLit = i < litCount;
+        // Draw edges first
+        ctx.strokeStyle = `rgba(255,255,255,${0.08 + density * 0.22})`;
+        ctx.lineWidth = 1;
 
-            gtx.beginPath();
-            gtx.arc(d.x, d.y, isLit ? 3 : 2, 0, Math.PI * 2);
-            gtx.fillStyle = isLit ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.35)";
-            gtx.fill();
-        }
+        edges.forEach(([a, b]) => {
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+        });
+
+        // Draw glowing nodes
+        nodes.forEach(n => {
+            ctx.beginPath();
+            ctx.arc(n.x, n.y, 2.2, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255,255,255,${0.3 + density * 0.7})`;
+
+            // glow
+            ctx.shadowBlur = 8 * density;
+            ctx.shadowColor = "white";
+
+            ctx.fill();
+            ctx.shadowBlur = 0;
+        });
     }
 
-    initDots();
-    drawGrid(0);
+    function updateWebScroll() {
+        const rect = webCanvas.getBoundingClientRect();
 
-    // Scroll-based activation
-    function updateGridOnScroll() {
-        const rect = gridCanvas.getBoundingClientRect();
-        const visibleRatio = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / window.innerHeight));
+        // Progress based on how much of the section is visible
+        const density = Math.min(
+            1,
+            Math.max(0, (window.innerHeight - rect.top) / (window.innerHeight * 1.2))
+        );
 
-        // 846% ≈ 8.46x — so light up to 90% of nodes
-        const scaledProgress = visibleRatio * 0.90;
-
-        drawGrid(scaledProgress);
+        drawWeb(density);
     }
 
-    window.addEventListener("scroll", updateGridOnScroll);
-    updateGridOnScroll();
+    window.addEventListener("scroll", updateWebScroll);
+    updateWebScroll();
 }
