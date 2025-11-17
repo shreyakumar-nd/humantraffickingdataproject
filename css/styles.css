@@ -256,13 +256,18 @@ section .content h2 {
   text-align: center;
 }
 
-/* Spiderweb Visualization Canvas */
 #webVisualization {
-    height: 600px;
+    height: 700px;
     width: 100%;
     display: block;
-    background: radial-gradient(circle at center, #111 0%, #000 100%);
-    border: 1px solid #222;
-    margin-top: 2rem;
+    background: radial-gradient(circle at center, #0b0b0b 0%, #000000 100%);
+    border: none;
+    margin-top: 2.5rem;
 }
+
+#webVisualization {
+    image-rendering: crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+}
+
 
