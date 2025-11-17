@@ -97,15 +97,42 @@ if (document.readyState === 'loading') {
 window.addEventListener('load', initializeDotMatrix);
 
 
-
-
-
-
-
-
-
 // Run on load
 checkFadeIn();
+
+function drawPieChart(canvasId, femalePercent) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+
+    const total = 100;
+    const female = femalePercent;
+    const male = total - female;
+
+    // convert % to radians
+    const femaleAngle = (female / 100) * 2 * Math.PI;
+
+    // draw male section (dark gray)
+    ctx.beginPath();
+    ctx.moveTo(90, 90);
+    ctx.fillStyle = "#555";
+    ctx.arc(90, 90, 80, 0, 2 * Math.PI);
+    ctx.fill();
+
+    // draw female section (white)
+    ctx.beginPath();
+    ctx.moveTo(90, 90);
+    ctx.fillStyle = "#ffffff";
+    ctx.arc(90, 90, 80, -Math.PI / 2, -Math.PI / 2 + femaleAngle);
+    ctx.fill();
+}
+
+// Run pie charts after page loads
+window.addEventListener("load", () => {
+    drawPieChart("pie2022", 9);   // 9% female
+    drawPieChart("pie2023", 21);  // 21% female
+});
 
 // hospitality visualization
 (function () {
