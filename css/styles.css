@@ -77,6 +77,49 @@ p {
     margin: 0 auto;
 }
 
+/* CALENDAR VISUAL */
+.calendar-visual {
+    display: flex;
+    flex-wrap: wrap;      /* allow multiple rows */
+    justify-content: center;
+    margin: 4rem auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.months {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 columns */
+    gap: 0.25rem;
+    width: 100%;
+    justify-items: center;
+}
+
+.month {
+    width: 100px;
+    height: 85px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    background-color: #111;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+}
+
+.has-image {
+    background-image: url('../visuals/calendar.jpg'); 
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.month.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
 
 /* FADE IN ANIMATIONS */
 .fade-in {
@@ -129,6 +172,29 @@ p {
     font-size: 1rem;
     color: #999999;
     line-height: 1.6;
+}
+
+/* VERTICAL PROFILE CARDS - Add this to your styles.css */
+.profile-card-vertical {
+    background: #252525;
+    padding: 2.5rem;
+    border-left: 4px solid #666666;
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+    max-width: 900px;
+}
+
+.profile-card-vertical:hover {
+    border-left-color: #ffffff;
+    transform: translateX(5px);
+}
+
+/* Keep the original profile-grid for sections that need horizontal layout */
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
 }
 
 /* STICKY VISUALIZATION SECTION */
@@ -255,6 +321,140 @@ blockquote {
 section .content h2 {
   text-align: center;
 }
+
+.pictograph {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 8px;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+.pictograph.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.person {
+    font-size: 1.8rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+.person:hover {
+    transform: scale(1.2);
+}
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* two equal columns */
+    gap: 1rem; /* space between columns */
+}
+
+.dot-matrix-container {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: #181818;
+    border-radius: 12px;
+    border: 1px solid #333;
+}
+
+.dot-matrix-header {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.dot-legend {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.legend-number {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.legend-label {
+    font-size: 0.95rem;
+    color: #b0b0b0;
+}
+
+.legend-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid #666;
+}
+
+/* Match these to your dot colors */
+.runaway-legend {
+    background: #ffffff;
+}
+
+.knew-legend {
+    background: #888888;
+}
+
+/* Dot grid */
+.dot-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 6px;
+    justify-items: center;
+    margin-bottom: 1rem;
+}
+
+.dot {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #444;
+}
+
+
+.dot.runaway {
+    background: #ffffff;
+}
+
+.dot.knew-trafficker {
+    background: #aaaaaa;
+}
+
+.dot-caption {
+    font-size: 0.9rem;
+    color: #888;
+    text-align: center;
+}
+
+.pie-container {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+    margin: 2.5rem 0;
+    flex-wrap: wrap;
+}
+
+.pie-chart-block {
+    text-align: center;
+}
+
+.pie-chart-block h4 {
+    color: #ffffff;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.pie-caption {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #aaaaaa;
+}
+
+
+
 
 /* 📌 EXPANDING NODE GRAPHIC: Clean, smooth, cinematic */
 #webVisualization {

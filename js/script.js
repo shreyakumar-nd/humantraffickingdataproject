@@ -23,12 +23,137 @@ function updateRollingNumber() {
     numberEl.textContent = `[${currentNumber}]`;
 }
 
+// --- CALENDAR FADE-IN WITH IMAGE BACKGROUNDS ---
+document.addEventListener("DOMContentLoaded", () => {
+    const monthsContainer = document.querySelector(".months");
+
+    // 48 months = 4 years × 12 months
+    for (let i = 0; i < 48; i++) {
+        const monthEl = document.createElement("div");
+        monthEl.classList.add("month", "has-image");
+        monthsContainer.appendChild(monthEl);
+    }
+
+    // Fade-in on scroll
+    function checkCalendars() {
+        document.querySelectorAll(".month").forEach(m => {
+            const rect = m.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 0.85) {
+                m.classList.add("visible");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", checkCalendars);
+    checkCalendars();
+});
+
+
 // SCROLL EVENTS
 window.addEventListener('scroll', () => {
     checkFadeIn();
     updateRollingNumber();
 });
 
+
+// DOT MATRIX VISUALIZATION - Generate 100 dots
+function initializeDotMatrix() {
+    const dotGrid = document.querySelector('.dot-grid');
+    if (!dotGrid) return;
+
+    dotGrid.innerHTML = '';
+
+    // First 50 dots: runaways
+    for (let i = 1; i <= 50; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'dot runaway';
+        dotGrid.appendChild(dot);
+    }
+
+    // Next 45 dots: knew trafficker
+    for (let i = 51; i <= 95; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'dot knew-trafficker';
+        dotGrid.appendChild(dot);
+    }
+
+    // Remaining 5 dots: other/unknown
+    for (let i = 96; i <= 100; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'dot';
+        dotGrid.appendChild(dot);
+    }
+}
+
+// Run when DOM is fully loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeDotMatrix);
+} else {
+    // DOM already loaded, run immediately
+    initializeDotMatrix();
+}
+
+// Also run on window load as backup
+window.addEventListener('load', initializeDotMatrix);
+
+
+// Run on load
+checkFadeIn();
+
+function drawPieChart(canvasId, femalePercent) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+
+    const total = 100;
+    const female = femalePercent;
+    const male = total - female;
+
+    // convert % to radians
+    const femaleAngle = (female / 100) * 2 * Math.PI;
+
+    // draw male section (dark gray)
+    ctx.beginPath();
+    ctx.moveTo(90, 90);
+    ctx.fillStyle = "#555";
+    ctx.arc(90, 90, 80, 0, 2 * Math.PI);
+    ctx.fill();
+
+    // draw female section (white)
+    ctx.beginPath();
+    ctx.moveTo(90, 90);
+    ctx.fillStyle = "#ffffff";
+    ctx.arc(90, 90, 80, -Math.PI / 2, -Math.PI / 2 + femaleAngle);
+    ctx.fill();
+}
+
+// Run pie charts after page loads
+window.addEventListener("load", () => {
+    drawPieChart("pie2022", 9);   // 9% female
+    drawPieChart("pie2023", 21);  // 21% female
+});
+
+// hospitality visualization
+(function () {
+    const pictograph = document.getElementById('pictograph');
+    const total = 100;
+    const filled = 75;
+
+    for (let i = 0; i < total; i++) {
+      const icon = document.createElement('div');
+      icon.textContent = i < filled ? '👤' : '⚪';
+      pictograph.appendChild(icon);
+    }
+
+    // reveal animation on scroll
+    window.addEventListener('scroll', () => {
+      const rect = pictograph.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) {
+        pictograph.classList.add('show');
+      }
+    });
+  })();
 // =============================
 // CLEAN GEOMETRIC SPIDERWEB
 // =============================
