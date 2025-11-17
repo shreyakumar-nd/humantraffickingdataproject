@@ -30,99 +30,73 @@ window.addEventListener('scroll', () => {
 });
 
 // =============================
-// SPIDERWEB VISUALIZATION (v2)
+// CLEAN GEOMETRIC SPIDERWEB
 // =============================
 
-const canvas = document.getElementById("webVisualization");
-if (canvas) {
-    const ctx = canvas.getContext("2d");
-    let width, height;
+const webCanvas = document.getElementById("webVisualization");
+if (webCanvas) {
+    const ctx = webCanvas.getContext("2d");
 
-    function resizeCanvas() {
-        width = canvas.offsetWidth;
-        height = canvas.offsetHeight;
-        canvas.width = width;
-        canvas.height = height;
+    function resizeWeb() {
+        webCanvas.width = webCanvas.offsetWidth;
+        webCanvas.height = webCanvas.offsetHeight;
     }
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
+    resizeWeb();
+    window.addEventListener("resize", resizeWeb);
 
-    // Generate web nodes and edges
-    function generateWeb(density) {
-        const nodes = [];
-        const edges = [];
+    function drawSpiderWeb(progress) {
+        const w = webCanvas.width;
+        const h = webCanvas.height;
+        const cx = w / 2;
+        const cy = h / 2;
 
-        // Start with ~4 nodes and grow up to ~400 (≈900% increase)
-        const numNodes = Math.floor(4 + density * 396);
+        ctx.clearRect(0, 0, w, h);
 
-        for (let i = 0; i < numNodes; i++) {
-            // Positions in a "zoomed-out" circle that expands as density increases
-            const angle = Math.random() * Math.PI * 2;
-            const radius = (width / 10) + density * (width / 1.2) * Math.random();
-            const x = width / 2 + Math.cos(angle) * radius;
-            const y = height / 2 + Math.sin(angle) * radius;
-            nodes.push({ x, y });
-        }
+        // WEB PARAMETERS
+        const maxRings = 12;              // how many radial rings at full expansion
+        const maxRadials = 24;            // how many spokes at full expansion
 
-        // Connect nearby nodes (simulate threads)
-        for (let i = 0; i < numNodes; i++) {
-            for (let j = i + 1; j < numNodes; j++) {
-                const dx = nodes[i].x - nodes[j].x;
-                const dy = nodes[i].y - nodes[j].y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                // closer nodes are more likely to connect
-                if (dist < 100 + density * 200 && Math.random() < 0.04 * density) {
-                    edges.push([i, j]);
-                }
-            }
-        }
+        const rings = Math.floor(2 + progress * (maxRings - 2));
+        const radials = Math.floor(3 + progress * (maxRadials - 3));
 
-        return { nodes, edges };
-    }
+        const maxRadius = Math.min(w, h) * 0.45;
 
-    function drawWeb(web, density) {
-        ctx.clearRect(0, 0, width, height);
-        ctx.save();
+        ctx.strokeStyle = "rgba(255,255,255,0.7)";
+        ctx.lineWidth = 1.2;
 
-        // Apply zoom-out effect — smaller scale at start, normal at full density
-        const scale = 1 - 0.8 * (1 - density); // zoom from 0.2x → 1x
-        ctx.translate(width / 2, height / 2);
-        ctx.scale(scale, scale);
-        ctx.translate(-width / 2, -height / 2);
+        // Draw radial lines (spokes)
+        for (let i = 0; i < radials; i++) {
+            const angle = (i / radials) * Math.PI * 2;
+            const x = cx + Math.cos(angle) * maxRadius * progress;
+            const y = cy + Math.sin(angle) * maxRadius * progress;
 
-        // Draw faint connecting lines
-        ctx.strokeStyle = "rgba(255,255,255,0.3)";
-        ctx.lineWidth = 1;
-        web.edges.forEach(([i, j]) => {
             ctx.beginPath();
-            ctx.moveTo(web.nodes[i].x, web.nodes[i].y);
-            ctx.lineTo(web.nodes[j].x, web.nodes[j].y);
+            ctx.moveTo(cx, cy);
+            ctx.lineTo(x, y);
             ctx.stroke();
-        });
+        }
 
-        // Draw small glowing nodes
-        ctx.fillStyle = "rgba(255,255,255,0.9)";
-        web.nodes.forEach(n => {
+        // Draw circular rings
+        for (let r = 1; r <= rings; r++) {
+            const radius = (r / rings) * maxRadius * progress;
+
             ctx.beginPath();
-            ctx.arc(n.x, n.y, 2, 0, Math.PI * 2);
-            ctx.fill();
-        });
-
-        ctx.restore();
+            ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+            ctx.stroke();
+        }
     }
 
-    // Scroll-based animation
-    function updateWebOnScroll() {
-        const rect = canvas.getBoundingClientRect();
-        const visibleRatio = Math.max(0, Math.min(1, 1 - Math.abs(rect.top) / window.innerHeight));
+    function updateWeb() {
+        const rect = webCanvas.getBoundingClientRect();
+        const viewport = window.innerHeight;
 
-        const web = generateWeb(visibleRatio);
-        drawWeb(web, visibleRatio);
+        // progress = 0 → small web
+        // progress = 1 → full web
+        const progress = Math.max(0, Math.min(1, 1 - rect.top / viewport));
+
+        drawSpiderWeb(progress);
     }
 
-    window.addEventListener("scroll", updateWebOnScroll);
-    updateWebOnScroll();
+    window.addEventListener("scroll", updateWeb);
+    updateWeb();
 }
-
-// Run on load
-checkFadeIn();
