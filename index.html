@@ -245,11 +245,29 @@
         <!-- Card 5: Rising Female Involvement -->
         <div class="profile-card-vertical fade-in">
             <div class="profile-type">Rising Female Involvement</div>
-            <div class="profile-title">From 9% to 21% in one year</div>
-            <p class="profile-description">Female involvement more than doubled from 2022 to 2023. In earlier studies, 24.4% were female, often serving as "bottoms" who recruit, enforce rules, and punish other victims.</p>
-            <p class="profile-description" style="margin-top: 1rem; font-style: italic; font-size: 0.95rem; color: #888;">Visualization: 2022 vs 2023 gender breakdown showing dramatic shift.</p>
+            <div class="profile-title">Female involvement doubled from 2022 to 2023</div>
+            <p class="profile-description">
+                Female involvement rose from 9% in 2022 to 21% in 2023 — a dramatic shift. Earlier studies show that many of these women serve as "bottoms," recruiting, enforcing rules, and punishing victims.
+            </p>
+
+            <!-- PIE CHARTS CONTAINER -->
+            <div class="pie-container">
+                <div class="pie-chart-block">
+                    <h4>2022</h4>
+                    <canvas id="pie2022" width="180" height="180"></canvas>
+                    <p class="pie-caption">9% Female • 91% Male</p>
+                </div>
+
+                <div class="pie-chart-block">
+                    <h4>2023</h4>
+                    <canvas id="pie2023" width="180" height="180"></canvas>
+                    <p class="pie-caption">21% Female • 79% Male</p>
+                </div>
+            </div>
+
             <p class="profile-description" style="margin-top: 1rem; font-size: 0.9rem;">
-                <a href="https://www.mccaininstitute.org/resources/reports/a-six-year-analysis-of-sex-traffickers-of-minors/" target="_blank" rel="noopener noreferrer">McCain Institute</a>
+                <a href="https://www.mccaininstitute.org/resources/reports/a-six-year-analysis-of-sex-traffickers-of-minors/" 
+                target="_blank" rel="noopener noreferrer">McCain Institute</a>
             </p>
         </div>
         
@@ -350,3 +368,4 @@
     <script src="js/script.js"></script>
 </body>
 </html>
+
