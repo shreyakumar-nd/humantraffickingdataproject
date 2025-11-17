@@ -29,24 +29,102 @@ window.addEventListener('scroll', () => {
     updateRollingNumber();
 });
 
-// WEB ANIMATION
-function animateWeb() {
-    const small = document.getElementById("web2010");
-    const large = document.getElementById("web2015");
+// ===============================
+// EXPANDING WEB VISUALIZATION
+// ===============================
+const webCanvas = document.getElementById("expandingWeb");
 
-    const rect = large.getBoundingClientRect();
-    const inView = rect.top < window.innerHeight * 0.8;
+if (webCanvas) {
+    const ctx = webCanvas.getContext("2d");
 
-    if (inView) {
-        small.style.opacity = "1";
-        small.style.transform = "translate(-50%, -50%) scale(1)";
-        
-        setTimeout(() => {
-            large.style.opacity = "1";
-            large.style.transform = "translate(-50%, -50%) scale(1)";
-        }, 400);
+    function resizeWebCanvas() {
+        webCanvas.width = webCanvas.offsetWidth;
+        webCanvas.height = webCanvas.offsetHeight;
     }
-}
 
-document.addEventListener("scroll", animateWeb);
+    resizeWebCanvas();
+    window.addEventListener("resize", resizeWebCanvas);
+
+    // Generate node positions based on density (0 = tiny, 1 = huge)
+    function generateNodes(density) {
+        const nodes = [];
+        const count = Math.floor(4 + density * 350); // 4 → ~354 (≈900% growth)
+
+        for (let i = 0; i < count; i++) {
+            const angle = Math.random() * Math.PI * 2;
+            const radius = (webCanvas.width * 0.05) + density * (webCanvas.width * 0.45) * Math.random();
+            const x = webCanvas.width / 2 + Math.cos(angle) * radius;
+            const y = webCanvas.height / 2 + Math.sin(angle) * radius;
+            nodes.push({ x, y });
+        }
+
+        return nodes;
+    }
+
+    // Generate lightweight edges
+    function generateEdges(nodes, density) {
+        const edges = [];
+        const threshold = 40 + density * 120;
+
+        for (let i = 0; i < nodes.length; i++) {
+            for (let j = i + 1; j < nodes.length; j++) {
+                const dx = nodes[i].x - nodes[j].x;
+                const dy = nodes[i].y - nodes[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < threshold) {
+                    edges.push([nodes[i], nodes[j]]);
+                }
+            }
+        }
+        return edges;
+    }
+
+    function drawWeb(density) {
+        ctx.clearRect(0, 0, webCanvas.width, webCanvas.height);
+
+        const nodes = generateNodes(density);
+        const edges = generateEdges(nodes, density);
+
+        // Draw edges first
+        ctx.strokeStyle = `rgba(255,255,255,${0.08 + density * 0.22})`;
+        ctx.lineWidth = 1;
+
+        edges.forEach(([a, b]) => {
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+        });
+
+        // Draw glowing nodes
+        nodes.forEach(n => {
+            ctx.beginPath();
+            ctx.arc(n.x, n.y, 2.2, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255,255,255,${0.3 + density * 0.7})`;
+
+            // glow
+            ctx.shadowBlur = 8 * density;
+            ctx.shadowColor = "white";
+
+            ctx.fill();
+            ctx.shadowBlur = 0;
+        });
+    }
+
+    function updateWebScroll() {
+        const rect = webCanvas.getBoundingClientRect();
+
+        // Progress based on how much of the section is visible
+        const density = Math.min(
+            1,
+            Math.max(0, (window.innerHeight - rect.top) / (window.innerHeight * 1.2))
+        );
+
+        drawWeb(density);
+    }
+
+    window.addEventListener("scroll", updateWebScroll);
+    updateWebScroll();
+}
 
