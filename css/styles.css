@@ -321,3 +321,29 @@ blockquote {
 section .content h2 {
   text-align: center;
 }
+
+.pictograph {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 8px;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+.pictograph.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.person {
+    font-size: 1.8rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+.person:hover {
+    transform: scale(1.2);
+}
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* two equal columns */
+    gap: 1rem; /* space between columns */
+}
