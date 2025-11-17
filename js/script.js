@@ -29,3 +29,24 @@ window.addEventListener('scroll', () => {
     updateRollingNumber();
 });
 
+// WEB ANIMATION
+function animateWeb() {
+    const small = document.getElementById("web2010");
+    const large = document.getElementById("web2015");
+
+    const rect = large.getBoundingClientRect();
+    const inView = rect.top < window.innerHeight * 0.8;
+
+    if (inView) {
+        small.style.opacity = "1";
+        small.style.transform = "translate(-50%, -50%) scale(1)";
+        
+        setTimeout(() => {
+            large.style.opacity = "1";
+            large.style.transform = "translate(-50%, -50%) scale(1)";
+        }, 400);
+    }
+}
+
+document.addEventListener("scroll", animateWeb);
+
