@@ -108,7 +108,7 @@ p {
 }
 
 .has-image {
-    background-image: url('visuals/calendar.jpg'); /* same image for now */
+    background-image: url('../visuals/calendar.jpg'); 
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
