@@ -76,7 +76,7 @@ if (gridCanvas) {
 
             gtx.beginPath();
             gtx.arc(d.x, d.y, isLit ? 3 : 2, 0, Math.PI * 2);
-            gtx.fillStyle = isLit ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.15)";
+            gtx.fillStyle = isLit ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.35)";
             gtx.fill();
         }
     }
@@ -87,7 +87,7 @@ if (gridCanvas) {
     // Scroll-based activation
     function updateGridOnScroll() {
         const rect = gridCanvas.getBoundingClientRect();
-        const visibleRatio = Math.max(0, Math.min(1, 1 - Math.abs(rect.top) / window.innerHeight));
+        const visibleRatio = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / window.innerHeight));
 
         // 846% ≈ 8.46x — so light up to 90% of nodes
         const scaledProgress = visibleRatio * 0.90;
