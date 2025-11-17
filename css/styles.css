@@ -90,14 +90,14 @@ p {
 .months {
     display: grid;
     grid-template-columns: repeat(6, 1fr); /* 6 columns */
-    gap: 0.5rem;
+    gap: 0.25rem;
     width: 100%;
     justify-items: center;
 }
 
 .month {
-    width: 70px;
-    height: 60px;
+    width: 100px;
+    height: 85px;
     border: 1px solid #333;
     border-radius: 6px;
     background-color: #111;
