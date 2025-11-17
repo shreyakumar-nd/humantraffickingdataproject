@@ -30,73 +30,71 @@ window.addEventListener('scroll', () => {
 });
 
 // =============================
-// CLEAN GEOMETRIC SPIDERWEB
+// DIGITAL GRID VISUALIZATION
 // =============================
 
-const webCanvas = document.getElementById("webVisualization");
-if (webCanvas) {
-    const ctx = webCanvas.getContext("2d");
+const gridCanvas = document.getElementById("gridVisualization");
+if (gridCanvas) {
+    const gtx = gridCanvas.getContext("2d");
+    let w, h;
 
-    function resizeWeb() {
-        webCanvas.width = webCanvas.offsetWidth;
-        webCanvas.height = webCanvas.offsetHeight;
+    function resizeGrid() {
+        w = gridCanvas.offsetWidth;
+        h = gridCanvas.offsetHeight;
+        gridCanvas.width = w;
+        gridCanvas.height = h;
     }
-    resizeWeb();
-    window.addEventListener("resize", resizeWeb);
+    resizeGrid();
+    window.addEventListener("resize", resizeGrid);
 
-    function drawSpiderWeb(progress) {
-        const w = webCanvas.width;
-        const h = webCanvas.height;
-        const cx = w / 2;
-        const cy = h / 2;
+    // Create a fixed grid of dots
+    const cols = 40;
+    const rows = 25;
+    let dots = [];
 
-        ctx.clearRect(0, 0, w, h);
-
-        // WEB PARAMETERS
-        const maxRings = 12;              // how many radial rings at full expansion
-        const maxRadials = 24;            // how many spokes at full expansion
-
-        const rings = Math.floor(2 + progress * (maxRings - 2));
-        const radials = Math.floor(3 + progress * (maxRadials - 3));
-
-        const maxRadius = Math.min(w, h) * 0.45;
-
-        ctx.strokeStyle = "rgba(255,255,255,0.7)";
-        ctx.lineWidth = 1.2;
-
-        // Draw radial lines (spokes)
-        for (let i = 0; i < radials; i++) {
-            const angle = (i / radials) * Math.PI * 2;
-            const x = cx + Math.cos(angle) * maxRadius * progress;
-            const y = cy + Math.sin(angle) * maxRadius * progress;
-
-            ctx.beginPath();
-            ctx.moveTo(cx, cy);
-            ctx.lineTo(x, y);
-            ctx.stroke();
-        }
-
-        // Draw circular rings
-        for (let r = 1; r <= rings; r++) {
-            const radius = (r / rings) * maxRadius * progress;
-
-            ctx.beginPath();
-            ctx.arc(cx, cy, radius, 0, Math.PI * 2);
-            ctx.stroke();
+    function initDots() {
+        dots = [];
+        for (let y = 0; y < rows; y++) {
+            for (let x = 0; x < cols; x++) {
+                dots.push({
+                    x: (x + 0.5) * (w / cols),
+                    y: (y + 0.5) * (h / rows),
+                    lit: false
+                });
+            }
         }
     }
 
-    function updateWeb() {
-        const rect = webCanvas.getBoundingClientRect();
-        const viewport = window.innerHeight;
+    function drawGrid(progress) {
+        gtx.clearRect(0, 0, w, h);
 
-        // progress = 0 → small web
-        // progress = 1 → full web
-        const progress = Math.max(0, Math.min(1, 1 - rect.top / viewport));
+        const litCount = Math.floor(dots.length * progress);
 
-        drawSpiderWeb(progress);
+        for (let i = 0; i < dots.length; i++) {
+            const d = dots[i];
+            const isLit = i < litCount;
+
+            gtx.beginPath();
+            gtx.arc(d.x, d.y, isLit ? 3 : 2, 0, Math.PI * 2);
+            gtx.fillStyle = isLit ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.15)";
+            gtx.fill();
+        }
     }
 
-    window.addEventListener("scroll", updateWeb);
-    updateWeb();
+    initDots();
+    drawGrid(0);
+
+    // Scroll-based activation
+    function updateGridOnScroll() {
+        const rect = gridCanvas.getBoundingClientRect();
+        const visibleRatio = Math.max(0, Math.min(1, 1 - Math.abs(rect.top) / window.innerHeight));
+
+        // 846% ≈ 8.46x — so light up to 90% of nodes
+        const scaledProgress = visibleRatio * 0.90;
+
+        drawGrid(scaledProgress);
+    }
+
+    window.addEventListener("scroll", updateGridOnScroll);
+    updateGridOnScroll();
 }
