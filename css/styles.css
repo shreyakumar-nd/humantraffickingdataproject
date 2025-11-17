@@ -80,44 +80,38 @@ p {
 /* CALENDAR VISUAL */
 .calendar-visual {
     display: flex;
-    flex-direction: column;
-    gap: 4rem;
-    margin-top: 4rem;
-    align-items: center;
-}
-
-.year {
-    text-align: center;
-}
-
-.year h4 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: #ffffff;
+    flex-wrap: wrap;      /* allow multiple rows */
+    justify-content: center;
+    margin: 4rem auto;
+    width: 100%;
+    max-width: 1200px;
 }
 
 .months {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.2rem;
+    grid-template-columns: repeat(6, 1fr); /* 6 columns */
+    gap: 0.25rem;
+    width: 100%;
     justify-items: center;
 }
 
 .month {
-    width: 140px;
-    height: 120px;
-    background: #111;
+    width: 100px;
+    height: 85px;
     border: 1px solid #333;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #aaa;
-    font-size: 1rem;
-    font-weight: 400;
+    border-radius: 6px;
+    background-color: #111;
     opacity: 0;
     transform: scale(0.95);
     transition: opacity 0.8s ease, transform 0.8s ease;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+}
+
+.has-image {
+    background-image: url('../visuals/calendar.jpg'); /* same image for now */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .month.visible {
@@ -125,11 +119,7 @@ p {
     transform: scale(1);
 }
 
-@media (max-width: 600px) {
-    .months {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
+
 
 /* FADE IN ANIMATIONS */
 .fade-in {
