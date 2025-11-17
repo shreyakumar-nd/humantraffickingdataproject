@@ -428,3 +428,30 @@ section .content h2 {
     text-align: center;
 }
 
+.pie-container {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+    margin: 2.5rem 0;
+    flex-wrap: wrap;
+}
+
+.pie-chart-block {
+    text-align: center;
+}
+
+.pie-chart-block h4 {
+    color: #ffffff;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.pie-caption {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #aaaaaa;
+}
+
+
+
