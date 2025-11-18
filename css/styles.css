@@ -213,6 +213,48 @@ a:hover {
     line-height: 1.6;
 }
 
+
+/* ---- AD BAR VIZ ---- */
+.ad-bar-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 60px 0;
+}
+
+.ad-bar {
+    display: flex;
+    gap: 6px;
+}
+
+.ad-block {
+    width: 40px;
+    height: 40px;
+    background: #333;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+    opacity: 0.3;
+    transition: background 0.25s ease, opacity 0.25s ease;
+}
+
+/* filled red blocks */
+.filled-red {
+    background: #e63946;
+    opacity: 1;
+}
+
+/* filled gray blocks (final 2) */
+.filled-gray {
+    background: #777;
+    opacity: 1;
+}
+
+
 /* VERTICAL PROFILE CARDS - Add this to your styles.css */
 .profile-card-vertical {
     background: #252525;
