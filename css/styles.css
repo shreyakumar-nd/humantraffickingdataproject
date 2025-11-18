@@ -132,6 +132,32 @@ a:hover {
     transform: scale(1);
 }
 
+/* LIGHT VERSION FOR TECH SECTION */
+.section-light {
+    background: #f2f2f2;   /* soft gray/white */
+    color: #111111;        /* dark text */
+}
+
+/* Make headings and paragraph text inside the light section dark */
+.section-light h1,
+.section-light h2,
+.section-light h3,
+.section-light h4,
+.section-light p,
+.section-light .stat-large,
+.section-light .stat-description {
+    color: #111111 !important;
+}
+
+/* Make links dark in this section */
+.section-light a {
+    color: #000000 !important;
+    text-decoration: underline;
+}
+
+.section-light a:hover {
+    color: #333333 !important;
+}
 
 
 /* FADE IN ANIMATIONS */
