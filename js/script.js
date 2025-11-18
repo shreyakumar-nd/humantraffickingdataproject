@@ -230,33 +230,30 @@ function updateAdBar() {
     if (!bar) return;
 
     const blocks = bar.querySelectorAll(".ad-block");
+    const section = document.querySelector(".ad-bar-container");
 
-    // Determine scroll progress of entire page
-    const scrollTop = window.scrollY;
-    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = scrollTop / scrollHeight;
+    const rect = section.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
 
-    // Convert scroll to number of blocks (0–10)
+    // progress from 0 → 1 while section scrolls through view
+    let progress = 1 - (rect.top / windowHeight);
+    progress = Math.max(0, Math.min(1, progress)); // clamp between 0–1
+
     const totalBlocks = 10;
-    const filledBlocks = Math.floor(scrollPercent * totalBlocks);
+    const filledBlocks = Math.floor(progress * totalBlocks);
 
-    // Fill blocks dynamically
     blocks.forEach((block, i) => {
         if (i < filledBlocks) {
-            // first 8 blocks = red with "ad"
             if (i < 8) {
                 block.classList.add("filled-red");
                 block.classList.remove("filled-gray");
                 block.textContent = "ad";
-            }
-            // last 2 blocks = gray with no text
-            else {
+            } else {
                 block.classList.add("filled-gray");
                 block.classList.remove("filled-red");
                 block.textContent = "";
             }
         } else {
-            // empty state
             block.classList.remove("filled-red", "filled-gray");
             block.textContent = "";
         }
