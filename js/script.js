@@ -223,3 +223,47 @@ if (webCanvas) {
     window.addEventListener("scroll", updateWeb);
     updateWeb();
 }
+
+// SCROLL-BASED AD BAR PROGRESS (10-block horizontal bar)
+function updateAdBar() {
+    const bar = document.getElementById("adBar");
+    if (!bar) return;
+
+    const blocks = bar.querySelectorAll(".ad-block");
+
+    // Determine scroll progress of entire page
+    const scrollTop = window.scrollY;
+    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = scrollTop / scrollHeight;
+
+    // Convert scroll to number of blocks (0–10)
+    const totalBlocks = 10;
+    const filledBlocks = Math.floor(scrollPercent * totalBlocks);
+
+    // Fill blocks dynamically
+    blocks.forEach((block, i) => {
+        if (i < filledBlocks) {
+            // first 8 blocks = red with "ad"
+            if (i < 8) {
+                block.classList.add("filled-red");
+                block.classList.remove("filled-gray");
+                block.textContent = "ad";
+            }
+            // last 2 blocks = gray with no text
+            else {
+                block.classList.add("filled-gray");
+                block.classList.remove("filled-red");
+                block.textContent = "";
+            }
+        } else {
+            // empty state
+            block.classList.remove("filled-red", "filled-gray");
+            block.textContent = "";
+        }
+    });
+}
+
+// add to scroll events without disrupting your existing listeners
+window.addEventListener("scroll", updateAdBar);
+window.addEventListener("load", updateAdBar);
+
