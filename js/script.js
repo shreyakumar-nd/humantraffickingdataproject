@@ -1,4 +1,4 @@
-// FADE-IN ANIMATION ON SCROLL
+ // FADE-IN ANIMATION ON SCROLL
 function checkFadeIn() {
     const elements = document.querySelectorAll('.fade-in');
     elements.forEach(el => {
@@ -237,7 +237,9 @@ function updateAdBar() {
 
     // progress from 0 → 1 while section scrolls through view
     let progress = 1 - (rect.top / windowHeight);
-    progress = Math.max(0, Math.min(1, progress)); // clamp between 0–1
+    // progress = Math.max(0, Math.min(1, progress)); // clamp between 0–1
+    progress = Math.max(0, Math.min(1, progress * 1.3));
+
 
     const totalBlocks = 10;
     const filledBlocks = Math.floor(progress * totalBlocks);
