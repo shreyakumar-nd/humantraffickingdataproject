@@ -223,36 +223,3 @@ if (webCanvas) {
     window.addEventListener("scroll", updateWeb);
     updateWeb();
 }
-
-// ONLINE AD CARDS VISUALIZATION
-function createAdCards() {
-    const container = document.getElementById("adCardsContainer");
-    if (!container) return;
-
-    const totalCards = 20;
-    const highlightCount = Math.round(totalCards * 0.8); // 80%
-
-    for (let i = 0; i < totalCards; i++) {
-        const card = document.createElement("div");
-        card.classList.add("ad-card");
-
-        if (i < highlightCount) {
-            card.classList.add("highlight");
-            card.textContent = "Ad";
-        } else {
-            card.classList.add("dim");
-            card.textContent = "Ad";
-        }
-
-        container.appendChild(card);
-
-        // fade-in animation staggered
-        setTimeout(() => {
-            card.classList.add("visible");
-        }, i * 120); // delay each card by 120ms
-    }
-}
-
-// Run when page loads
-document.addEventListener("DOMContentLoaded", createAdCards);
-
