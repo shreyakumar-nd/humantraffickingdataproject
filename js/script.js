@@ -154,10 +154,8 @@ window.addEventListener("load", () => {
       }
     });
   })();
-// =============================
-// CLEAN GEOMETRIC SPIDERWEB
-// =============================
 
+// CLEAN GEOMETRIC SPIDERWEB
 const webCanvas = document.getElementById("webVisualization");
 if (webCanvas) {
     const ctx = webCanvas.getContext("2d");
