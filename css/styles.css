@@ -56,12 +56,17 @@ p {
     color: #b0b0b0;
 }
 
-// Make links white for dark sections
-.section-black a,
-.section-dark a,
-.section-darker a {
+// Make ALL links white
+a {
     color: #ffffff !important;
+    text-decoration: none;   /* optional */
 }
+
+/* Optional: white on hover */
+a:hover {
+    color: #cccccc !important;
+}
+
 
 .stat-large {
     font-size: 2.5rem;
