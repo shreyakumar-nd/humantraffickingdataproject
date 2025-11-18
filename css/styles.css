@@ -56,6 +56,13 @@ p {
     color: #b0b0b0;
 }
 
+// Make links white for dark sections
+.section-black a,
+.section-dark a,
+.section-darker a {
+    color: #ffffff !important;
+}
+
 .stat-large {
     font-size: 2.5rem;
     font-weight: 500;
