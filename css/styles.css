@@ -59,12 +59,13 @@ p {
 /* Make ALL links white */
 a {
     color: #ffffff !important;
-    text-decoration: none;   /* optional */
+    text-decoration: underline; 
 }
 
-/* Optional: white on hover */
+/* Make links gray on hover */
 a:hover {
     color: #cccccc !important;
+    text-decoration: underline;
 }
 
 
