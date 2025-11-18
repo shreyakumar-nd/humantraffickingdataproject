@@ -184,7 +184,7 @@ if (webCanvas) {
 
         const maxRadius = Math.min(w, h) * 0.45;
 
-        ctx.strokeStyle = "rgba(255,255,255,0.7)";
+        ctx.strokeStyle = "#000";
         ctx.lineWidth = 1.2;
 
         // Draw radial lines (spokes)
