@@ -535,14 +535,12 @@ section .content h2 {
 }
 
 
-
-
-/* 📌 EXPANDING NODE GRAPHIC: Clean, smooth, cinematic */
+/* EXPANDING NODE SPIDERWEB GRAPHIC */
 #webVisualization {
     height: 700px;
     width: 100%;
     display: block;
-    background: radial-gradient(circle at center, #0b0b0b 0%, #000000 100%);
+    background: radial-gradient(circle at center, #ffffff 0%, #f0f0f0 100%);
     border: none;
     margin-top: 2.5rem;
 }
