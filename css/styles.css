@@ -455,3 +455,20 @@ section .content h2 {
 
 
 
+
+/* 📌 EXPANDING NODE GRAPHIC: Clean, smooth, cinematic */
+#webVisualization {
+    height: 700px;
+    width: 100%;
+    display: block;
+    background: radial-gradient(circle at center, #0b0b0b 0%, #000000 100%);
+    border: none;
+    margin-top: 2.5rem;
+}
+
+/* Optional: keep the canvas centered and sharp on retina */
+#webVisualization {
+    image-rendering: crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+}
+
