@@ -159,62 +159,6 @@ a:hover {
     color: #333333 !important;
 }
 
-/* --- STAT VISUALIZATION SECTION --- */
-.stat-ads-section {
-    padding: 60px 0;
-    text-align: center;
-}
-
-.stat-title {
-    font-size: 1.8rem;
-    margin-bottom: 30px;
-    color: #ffffff;
-}
-
-/* Container for cards */
-.ad-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-/* Ad card style */
-.ad-card {
-    width: 90px;
-    height: 60px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-    font-size: 1.1rem;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-/* Highlighted 80% */
-.ad-card.highlight {
-    background: #ff4f4f;   /* red/orange alert */
-    color: #fff;
-}
-
-/* Dimmed 20% */
-.ad-card.dim {
-    background: #555;
-    color: #ccc;
-}
-
-/* When visible */
-.ad-card.visible {
-    opacity: 1;
-    transform: translateY(0px);
-}
-
-
 
 /* FADE IN ANIMATIONS */
 .fade-in {
