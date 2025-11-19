@@ -130,8 +130,11 @@ function drawPieChart(canvasId, femalePercent) {
 
 // Run pie charts after page loads
 window.addEventListener("load", () => {
-    drawPieChart("pie2022", 9);   // 9% female
-    drawPieChart("pie2023", 21);  // 21% female
+    // All trafficking defendants – 9% female, 91% male
+    drawPieChart("pieAll", 9);
+
+    // Sexual exploitation & other abuse of children – 6% female, 94% male
+    drawPieChart("pieChild", 6);
 });
 
 // hospitality visualization
@@ -265,4 +268,6 @@ function updateAdBar() {
 // add to scroll events without disrupting your existing listeners
 window.addEventListener("scroll", updateAdBar);
 window.addEventListener("load", updateAdBar);
+
+
 
