@@ -234,14 +234,49 @@
         <!-- Card 3: Victims Become Criminals -->
         <div class="profile-card-vertical fade-in">
             <div class="profile-type">Victims Become Criminals</div>
-            <div class="profile-title">62% arrested or detained</div>
-            <p class="profile-description">Of those, 71% now have a criminal record, and 90% said crimes were committed under coercion while trafficked. The system punishes them before it protects them.</p>
-            <p class="profile-description" style="margin-top: 1rem; font-style: italic; font-size: 0.95rem; color: #888;">Visualization: Pipeline showing victim to arrested to criminal record to coerced crimes.</p>
+            <div class="profile-title">A System That Criminalizes Survivors</div>
+            <p class="profile-description">
+                62% of identified trafficking survivors reported being arrested or detained. Of those, 71% now have a criminal record, and 90% said the crimes were committed under coercion while they were trafficked. The system punishes them before it protects them.
+            </p>
+
+            <!-- PIPELINE VISUALIZATION -->
+            <div class="pipeline-container">
+                <div class="pipeline-step">
+                    <div class="pipeline-percent">100%</div>
+                    <div class="pipeline-label">Identified survivors</div>
+                </div>
+
+                <div class="pipeline-arrow">➜</div>
+
+                <div class="pipeline-step">
+                    <div class="pipeline-percent">62%</div>
+                    <div class="pipeline-label">Arrested or detained</div>
+                    <div class="pipeline-subtext">Contact with criminal legal system</div>
+                </div>
+
+                <div class="pipeline-arrow">➜</div>
+
+                <div class="pipeline-step">
+                    <div class="pipeline-percent">71%</div>
+                    <div class="pipeline-label">Have a criminal record</div>
+                    <div class="pipeline-subtext">of those arrested or detained</div>
+                </div>
+
+                <div class="pipeline-arrow">➜</div>
+
+                <div class="pipeline-step">
+                    <div class="pipeline-percent">90%</div>
+                    <div class="pipeline-label">Crimes under coercion</div>
+                    <div class="pipeline-subtext">while being trafficked</div>
+                </div>
+            </div>
+
             <p class="profile-description" style="margin-top: 1rem; font-size: 0.9rem;">
-                <a href="https://www.state.gov/reports/2024-trafficking-in-persons-report/" target="_blank" rel="noopener noreferrer">U.S. Department of State</a>
+                <a href="https://www.state.gov/reports/2024-trafficking-in-persons-report/"
+                target="_blank" rel="noopener noreferrer">U.S. Department of State</a>
             </p>
         </div>
-        
+
         <div class="divider"></div>
         
         <h2 class="fade-in">The People Involved</h2>
@@ -259,42 +294,67 @@
             </p>
         </div>
         
-        <!-- Card 5: Rising Female Involvement -->
+        <!-- Card 5: Who Is Prosecuted? -->
         <div class="profile-card-vertical fade-in">
-            <div class="profile-type">Rising Female Involvement</div>
-            <div class="profile-title">Female involvement doubled from 2022 to 2023</div>
+            <div class="profile-type">Prosecution Patterns</div>
+            <div class="profile-title">Trafficking Defendants Are Overwhelmingly Male</div>
             <p class="profile-description">
-                Female involvement rose from 9% in 2022 to 21% in 2023 — a dramatic shift. Earlier studies show that many of these women serve as "bottoms," recruiting, enforcing rules, and punishing victims.
+                Of the 1,070 defendants charged with any of the three types of human trafficking offenses in U.S. district court in fiscal year 2022, 91% were male.
+                Among the 203 defendants charged with peonage, slavery, forced labor, and sex trafficking, 69% were male. 
+                Of the 523 defendants charged with sexual exploitation and other abuse of children, 94% were male.
             </p>
 
             <!-- PIE CHARTS CONTAINER -->
             <div class="pie-container">
                 <div class="pie-chart-block">
-                    <h4>2022</h4>
-                    <canvas id="pie2022" width="180" height="180"></canvas>
+                    <h4>All Trafficking Defendants (2022)</h4>
+                    <canvas id="pieAll" width="180" height="180"></canvas>
                     <p class="pie-caption">9% Female • 91% Male</p>
                 </div>
 
                 <div class="pie-chart-block">
-                    <h4>2023</h4>
-                    <canvas id="pie2023" width="180" height="180"></canvas>
-                    <p class="pie-caption">21% Female • 79% Male</p>
+                    <h4>Child Sexual Exploitation (2022)</h4>
+                    <canvas id="pieChild" width="180" height="180"></canvas>
+                    <p class="pie-caption">6% Female • 94% Male</p>
                 </div>
             </div>
 
             <p class="profile-description" style="margin-top: 1rem; font-size: 0.9rem;">
-                <a href="https://www.mccaininstitute.org/resources/reports/a-six-year-analysis-of-sex-traffickers-of-minors/" 
-                target="_blank" rel="noopener noreferrer">McCain Institute</a>
+                <a href="https://bjs.ojp.gov/library/publications/human-trafficking-data-collection-activities-2024"
+                target="_blank" rel="noopener noreferrer">
+                    Bureau of Justice Statistics, 2024
+                </a>
             </p>
         </div>
-        
+                
         <!-- Card 6: Criminal History -->
         <div class="profile-card-vertical fade-in">
             <div class="profile-type">Criminal History</div>
             <div class="profile-title">68.5% had little or no prior history</div>
-            <p class="profile-description">These are often first-time offenders: neighbors, coworkers, family members, not career criminals with long rap sheets.</p>
+            <p class="profile-description">
+                These are often first-time offenders: neighbors, coworkers, family members, not career criminals with long rap sheets.
+            </p>
+
+            <!-- CRIMINAL HISTORY VISUALIZATION -->
+            <div class="history-visual">
+                <div class="history-bar">
+                    <div class="history-segment first-time">
+                        <span class="history-percent">68.5%</span>
+                        <span class="history-label">Little or no prior record</span>
+                    </div>
+                    <div class="history-segment repeat">
+                        <span class="history-percent">31.5%</span>
+                        <span class="history-label">More extensive prior history</span>
+                    </div>
+                </div>
+                <p class="history-caption">
+                    Most trafficking offenders are not long-time criminals – they are people with minimal records drawn into these crimes.
+                </p>
+            </div>
+
             <p class="profile-description" style="margin-top: 1rem; font-size: 0.9rem;">
-                <a href="https://www.ussc.gov/sites/default/files/pdf/research-and-publications/quick-facts/Sexual_Abuse_FY23.pdf" target="_blank" rel="noopener noreferrer">U.S. Sentencing Commission</a>
+                <a href="https://www.ussc.gov/sites/default/files/pdf/research-and-publications/quick-facts/Sexual_Abuse_FY23.pdf" 
+                target="_blank" rel="noopener noreferrer">U.S. Sentencing Commission</a>
             </p>
         </div>
     </div>
@@ -385,4 +445,6 @@
     <script src="js/script.js"></script>
 </body>
 </html>
+
+
 
