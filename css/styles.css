@@ -550,4 +550,100 @@ section .content h2 {
     image-rendering: crisp-edges;
     image-rendering: -webkit-optimize-contrast;
 }
+.pipeline-container {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.pipeline-step {
+    background: #181818;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+    min-width: 160px;
+    text-align: center;
+    flex: 1 1 160px;
+}
+
+.pipeline-percent {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.2rem;
+}
+
+.pipeline-label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #e0e0e0;
+}
+
+.pipeline-subtext {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 0.25rem;
+}
+
+.pipeline-arrow {
+    align-self: center;
+    font-size: 1.5rem;
+    color: #666;
+}
+
+.history-visual {
+    margin-top: 2rem;
+}
+
+.history-bar {
+    display: flex;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #333;
+    background: #111;
+}
+
+/* Segments use flex so the widths match the percentages roughly */
+.history-segment {
+    padding: 0.9rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.2rem;
+}
+
+/* 68.5% little/no prior record */
+.history-segment.first-time {
+    flex: 685;
+    background: #f0f0f0;
+    color: #111;
+}
+
+/* 31.5% more extensive prior history */
+.history-segment.repeat {
+    flex: 315;
+    background: #2a2a2a;
+    color: #f5f5f5;
+}
+
+.history-percent {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.history-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.85;
+}
+
+.history-caption {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    color: #888;
+}
 
