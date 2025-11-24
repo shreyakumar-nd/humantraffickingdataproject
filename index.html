@@ -180,16 +180,33 @@
     <div class="content">
         <h2 class="fade-in">The People Affected</h2>
         
-        <h3 class="fade-in">Who Is Involved?</h3>
+        <h3 class="fade-in">Who Are The Victims?</h3>
         
-        <!-- Card 1: Disproportionate Impact -->
+        <!-- Card 1:  Profile -->
         <div class="profile-card-vertical fade-in">
-            <div class="profile-type">Disproportionate Impact</div>
-            <div class="profile-title">40% Black, 24% Latinx</div>
-            <p class="profile-description">In Cook County, Illinois (2012-2016), 66% of victims were Black women. Yet Black children account for 53% of all juvenile prostitution arrests, punished as criminals rather than protected as victims.</p>
-            <p class="profile-description" style="margin-top: 1rem; font-style: italic; font-size: 0.95rem; color: #888;">Visualization: Side-by-side comparison showing victims by race next to arrest rates.</p>
+            <div class="profile-type">Victim Profile</div>
+            <div class="profile-title">Nearly All Victims Are Girls — Average Age 15</div>
+            <p class="profile-description">
+                In a review of 1,416 federal sex trafficking cases, 941 victims were identified. 
+                Nearly all (98.9%) were female, with an average age of just 15 years old at the time of exploitation.
+            </p>
+        
+            <!-- UNIQUE VISUALIZATION -->
+            <div class="girl-visual">
+                <div class="circle large">
+                    <span class="percent-text">98.9%</span>
+                    <span class="label-text">Female</span>
+                </div>
+        
+                <div class="age-box">
+                    <span class="age-number">15</span>
+                    <span class="age-label">Average age</span>
+                </div>
+            </div>
+        
             <p class="profile-description" style="margin-top: 1rem; font-size: 0.9rem;">
-                <a href="https://rights4girls.org/wp-content/uploads/r4g/2018/09/Racial-Justice-fact-sheet-Sept-2018-Final.pdf" target="_blank" rel="noopener noreferrer">Rights4Girls</a>
+                <a href="https://www.mccaininstitute.org/resources/reports/a-six-year-analysis-of-sex-traffickers-of-minors/" 
+                   target="_blank" rel="noopener noreferrer">McCain Institute</a>
             </p>
         </div>
         
@@ -236,38 +253,62 @@
             <div class="profile-type">Victims Become Criminals</div>
             <div class="profile-title">A System That Criminalizes Survivors</div>
             <p class="profile-description">
-                62% of identified trafficking survivors reported being arrested or detained. Of those, 71% now have a criminal record, and 90% said the crimes were committed under coercion while they were trafficked. The system punishes them before it protects them.
+                62% of identified trafficking survivors reported being arrested or detained. Among those who were arrested, 
+                71% now carry a criminal record, and 90% said the crimes were committed under coercion while they were trafficked. 
+                Instead of being treated as victims, many are pulled deeper into the criminal legal system.
             </p>
 
-            <!-- PIPELINE VISUALIZATION -->
-            <div class="pipeline-container">
-                <div class="pipeline-step">
-                    <div class="pipeline-percent">100%</div>
-                    <div class="pipeline-label">Identified survivors</div>
+            <!-- JUSTICE TREE VISUALIZATION -->
+            <div class="justice-tree">
+                <!-- Level 1 -->
+                <div class="tree-node first">
+                    <div class="tree-card tree-root">
+                        <div class="tree-header">
+                            <span class="tree-percent">100%</span>
+                            <span class="tree-label">Identified survivors</span>
+                        </div>
+                        <p class="tree-subtext">People recognized as trafficking survivors.</p>
+                    </div>
                 </div>
 
-                <div class="pipeline-arrow">➜</div>
-
-                <div class="pipeline-step">
-                    <div class="pipeline-percent">62%</div>
-                    <div class="pipeline-label">Arrested or detained</div>
-                    <div class="pipeline-subtext">Contact with criminal legal system</div>
+                <!-- Level 2 -->
+                <div class="tree-node">
+                    <div class="tree-card tree-mid">
+                        <div class="tree-header">
+                            <span class="tree-percent">62%</span>
+                            <span class="tree-label">Arrested or detained</span>
+                        </div>
+                        <p class="tree-subtext">
+                            Nearly 2 out of 3 survivors are pulled into the criminal legal system.
+                        </p>
+                    </div>
                 </div>
 
-                <div class="pipeline-arrow">➜</div>
-
-                <div class="pipeline-step">
-                    <div class="pipeline-percent">71%</div>
-                    <div class="pipeline-label">Have a criminal record</div>
-                    <div class="pipeline-subtext">of those arrested or detained</div>
+                <!-- Level 3 -->
+                <div class="tree-node">
+                    <div class="tree-card tree-deeper">
+                        <div class="tree-header">
+                            <span class="tree-percent">71%</span>
+                            <span class="tree-label">Carry a criminal record</span>
+                        </div>
+                        <p class="tree-subtext">
+                            Of those arrested, most leave with a record (≈44% of all survivors).
+                        </p>
+                    </div>
                 </div>
 
-                <div class="pipeline-arrow">➜</div>
-
-                <div class="pipeline-step">
-                    <div class="pipeline-percent">90%</div>
-                    <div class="pipeline-label">Crimes under coercion</div>
-                    <div class="pipeline-subtext">while being trafficked</div>
+                <!-- Level 4 -->
+                <div class="tree-node last">
+                    <div class="tree-card tree-deepest">
+                        <div class="tree-header">
+                            <span class="tree-percent">90%</span>
+                            <span class="tree-label">Crimes under coercion</span>
+                        </div>
+                        <p class="tree-subtext">
+                            The vast majority say the crimes were committed under coercion while being trafficked 
+                            (≈40% of all survivors).
+                        </p>
+                    </div>
                 </div>
             </div>
 
@@ -286,13 +327,43 @@
         <!-- Card 4: Demographics -->
         <div class="profile-card-vertical fade-in">
             <div class="profile-type">Demographics</div>
-            <div class="profile-title">94% Male, Age 38, 96% US Citizens</div>
-            <p class="profile-description">These aren't foreign criminals or organized crime syndicates, they're domestic offenders operating in American communities.</p>
-            <p class="profile-description" style="margin-top: 1rem; font-style: italic; font-size: 0.95rem; color: #888;">Visualization: Three key stats with icons emphasizing "homegrown problem."</p>
+            <div class="profile-title">Child Sexual Exploitation Offender Profile</div>
+            <p class="profile-description">
+                On average, convicted traffickers are overwhelmingly male, in their late 30s, and U.S. citizens — a largely domestic offender population operating in American communities.
+            </p>
+
+            <!-- DEMOGRAPHICS VISUALIZATION -->
+            <div class="demographics-visual">
+                <div class="demographic-pill">
+                    <div class="demo-icon">♂</div>
+                    <div class="demo-number">94%</div>
+                    <div class="demo-label">Male offenders</div>
+                </div>
+
+                <div class="demographic-pill">
+                    <div class="demo-icon">🎂</div>
+                    <div class="demo-number">38</div>
+                    <div class="demo-label">Average age</div>
+                </div>
+
+                <div class="demographic-pill">
+                    <div class="demo-icon">🇺🇸</div>
+                    <div class="demo-number">96%</div>
+                    <div class="demo-label">U.S. citizens</div>
+                </div>
+            </div>
+
+            <p class="profile-description demographics-caption">
+                These criminals are not operating far away. They are largely domestic offenders within American communities.
+            </p>
+
             <p class="profile-description" style="margin-top: 1rem; font-size: 0.9rem;">
-                <a href="https://www.ussc.gov/sites/default/files/pdf/research-and-publications/quick-facts/Sexual_Abuse_FY23.pdf" target="_blank" rel="noopener noreferrer">U.S. Sentencing Commission</a>
+                <a href="https://www.ussc.gov/sites/default/files/pdf/research-and-publications/quick-facts/Sexual_Abuse_FY23.pdf" target="_blank" rel="noopener noreferrer">
+                    U.S. Sentencing Commission
+                </a>
             </p>
         </div>
+
         
         <!-- Card 5: Who Is Prosecuted? -->
         <div class="profile-card-vertical fade-in">
@@ -398,18 +469,21 @@
             <div class="profile-grid">
                 <div class="profile-card fade-in">
                     <div class="profile-type">Warning Signs</div>
+                    <p class="profile-description">Hotels’ use of recruiters and subcontractors for roles like cleaning, security, and food service creates opportunities for labor trafficking through debt bondage, passport seizure, and coercion. - 
+                        <a href="" target="_blank" rel="noopener noreferrer">Add Later</a>
+                    </p>
                     <p class="profile-description">Constant guest turnover, low security, and cash payments allow for anonymity. - 
-                        <a href="https://theexodusroad.com/human-trafficking-us-hotels/" target="_blank" rel="noopener noreferrer">The Exodus Road</a>
+                        <a href="" target="_blank" rel="noopener noreferrer">Add Later</a>
                     </p>
                     <p class="profile-description">Vulnerable groups staying in hotels (migrants, people facing poverty, families in crisis) are easy targets. - 
-                        <a href="https://theexodusroad.com/human-trafficking-us-hotels/" target="_blank" rel="noopener noreferrer">The Exodus Road</a>
+                        <a href="" target="_blank" rel="noopener noreferrer">Add Later</a>
                     </p>
                 </div>
                 
                 <div class="profile-card fade-in">
                     <div class="profile-type">How to Tell</div>
-                    <p class="profile-description">Heavy foot traffic in and out of a hotel room, requesting of rooms with a view of the parking lot, paying for rooms with cash or a pre-paid card, frequent requests for fresh towels and linens, extended stay with no/few personal possessions - 
-                        <a href="https://newgenadv.com/2023/10/human-trafficking-in-the-hotel-industry/" target="_blank" rel="noopener noreferrer">NewGen Advisory</a>
+                    <p class="profile-description">Heavy foot traffic in and out of a hotel room. - 
+                        <a href="" target="_blank" rel="noopener noreferrer">Add Later</a>
                     </p>
                 </div>
             </div>
@@ -442,6 +516,8 @@
     <script src="js/script.js"></script>
 </body>
 </html>
+
+
 
 
 
