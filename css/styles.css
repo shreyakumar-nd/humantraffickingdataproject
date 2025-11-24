@@ -429,6 +429,62 @@ section .content h2 {
     gap: 1rem; /* space between columns */
 }
 
+.girl-visual {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+/* Giant percentage circle */
+.circle.large {
+    width: 150px;
+    height: 150px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #ffffff 0%, #999999 100%);
+    color: #111;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(255,255,255,0.15);
+}
+
+.percent-text {
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+
+.label-text {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin-top: 0.25rem;
+}
+
+/* Age box */
+.age-box {
+    background: #181818;
+    border: 1px solid #333;
+    border-radius: 14px;
+    padding: 1rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+}
+
+.age-number {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.age-label {
+    font-size: 0.9rem;
+    color: #cccccc;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 .dot-matrix-container {
     margin-top: 2rem;
     padding: 2rem;
@@ -550,49 +606,7 @@ section .content h2 {
     image-rendering: crisp-edges;
     image-rendering: -webkit-optimize-contrast;
 }
-.pipeline-container {
-    margin-top: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    justify-content: center;
-    gap: 0.75rem;
-}
 
-.pipeline-step {
-    background: #181818;
-    border: 1px solid #333;
-    border-radius: 10px;
-    padding: 1.2rem 1.4rem;
-    min-width: 160px;
-    text-align: center;
-    flex: 1 1 160px;
-}
-
-.pipeline-percent {
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: #ffffff;
-    margin-bottom: 0.2rem;
-}
-
-.pipeline-label {
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: #e0e0e0;
-}
-
-.pipeline-subtext {
-    font-size: 0.8rem;
-    color: #888;
-    margin-top: 0.25rem;
-}
-
-.pipeline-arrow {
-    align-self: center;
-    font-size: 1.5rem;
-    color: #666;
-}
 
 .history-visual {
     margin-top: 2rem;
@@ -646,4 +660,160 @@ section .content h2 {
     font-size: 0.9rem;
     color: #888;
 }
+
+.demographics-visual {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    margin: 2rem 0 1rem 0;
+}
+
+.demographic-pill {
+    background: #181818;
+    border: 1px solid #333;
+    border-radius: 14px;
+    padding: 1.2rem 1.6rem;
+    min-width: 160px;
+    text-align: center;
+    flex: 1 1 160px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+.demo-icon {
+    font-size: 2rem;
+    margin-bottom: 0.4rem;
+}
+
+.demo-number {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.2rem;
+}
+
+.demo-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #bbbbbb;
+}
+
+.demographics-caption {
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    color: #aaaaaa;
+}
+
+/* JUSTICE TREE VISUALIZATION – clean vertical flow, no red */
+.justice-tree {
+    margin-top: 2rem;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 0.5rem;
+    position: relative;
+}
+
+/* each node centered, stacked vertically */
+.tree-node {
+    position: relative;
+    margin-bottom: 1.8rem;
+    padding-top: 1.8rem;
+    display: flex;
+    justify-content: center;
+}
+
+/* vertical line above the node (flow line) */
+.tree-node::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 1.6rem;
+    background: linear-gradient(to bottom, #555, #333);
+    opacity: 0.8;
+}
+
+/* circular node marker */
+.tree-node::after {
+    content: "";
+    position: absolute;
+    top: 1.4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    border-radius: 999px;
+    background: #e0e0e0;
+    border: 2px solid #111;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+/* first node: no line above */
+.tree-node.first::before {
+    display: none;
+}
+
+/* last node: circle but no extra line below (already implied) */
+.tree-node.last::before {
+    background: linear-gradient(to bottom, #555, #444);
+}
+
+/* the little box around each stat */
+.tree-card {
+    background: #1b1b1b;
+    border-radius: 14px;
+    border: 1px solid #333;
+    padding: 1rem 1.3rem;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+    max-width: 420px;
+    width: 100%;
+}
+
+/* subtle depth changes – same palette as rest of site */
+.tree-root {
+    background: linear-gradient(135deg, #222222, #292929);
+}
+
+.tree-mid {
+    background: linear-gradient(135deg, #1f1f23, #26262b);
+}
+
+.tree-deeper {
+    background: linear-gradient(135deg, #1c1f23, #23272b);
+}
+
+.tree-deepest {
+    background: linear-gradient(135deg, #181c20, #20252a);
+}
+
+.tree-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin-bottom: 0.3rem;
+}
+
+.tree-percent {
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.tree-label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #f0f0f0;
+}
+
+.tree-subtext {
+    font-size: 0.9rem;
+    color: #b8b8b8;
+    margin: 0;
+}
+
 
