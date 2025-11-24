@@ -269,6 +269,29 @@ function updateAdBar() {
 window.addEventListener("scroll", updateAdBar);
 window.addEventListener("load", updateAdBar);
 
+// Activate fade-in + pulsing icons when platform cards enter view
+function activatePlatformCards() {
+    const platformCards = document.querySelectorAll('.platform-card');
+
+    platformCards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        if (rect.top < windowHeight * 0.8) {
+            // Fade-in
+            card.classList.add('visible');
+
+            // Pulse only the icon
+            const icon = card.querySelector('.icon');
+            icon.classList.add('pulse');
+        }
+    });
+}
+
+window.addEventListener('scroll', activatePlatformCards);
+window.addEventListener('load', activatePlatformCards);
+
+
 
 
 
