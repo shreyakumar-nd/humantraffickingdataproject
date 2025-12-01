@@ -288,6 +288,32 @@ function activatePlatformCards() {
     });
 }
 
+// ====== Money/Mountain Animation ======
+(function() {
+
+  const section = document.getElementById('wealth-height-cinematic');
+  const mountain = document.querySelector('.mountain-stack');
+  const money = document.querySelector('.money-stack');
+
+  function updateCinematic() {
+   const rect = section.getBoundingClientRect();
+   const progress = Math.min(Math.max((window.innerHeight - rect.top) / (rect.height - window.innerHeight), 0), 1);
+ 
+   const maxMountains = 8; // symbolic Everests
+   const mountainHeight = progress * maxMountains * 300; // px
+ 
+   const maxMoneyHeight = 3000;
+   const moneyHeight = progress * maxMoneyHeight;
+ 
+   mountain.style.height = `${mountainHeight}px`;
+   money.style.height = `${moneyHeight}px`;
+ }
+
+  window.addEventListener('scroll', updateCinematic);
+  window.addEventListener('resize', updateCinematic);
+  updateCinematic();
+})();
+
 window.addEventListener('scroll', activatePlatformCards);
 window.addEventListener('load', activatePlatformCards);
 
