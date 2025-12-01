@@ -992,7 +992,7 @@ section .content h2 {
 .cinematic-text {
   z-index: 5;
   max-width: 650px;
-  padding-top: 2rem;
+  padding-top: 0;
 }
 
 .cinematic-text h2 {
