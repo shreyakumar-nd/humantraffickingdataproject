@@ -976,3 +976,81 @@ section .content h2 {
     margin: 0;
 }
 
+/* ====== Mountain Money Section ====== */
+
+.cinematic-section {
+  position: relative;
+  width: 100%;
+  height: 200vh; /* long scroll */
+  background: transparent; 
+  color: white;
+  overflow: visible;
+  padding: 0;
+  margin: 0;
+}
+
+.cinematic-text {
+  z-index: 5;
+  max-width: 650px;
+  padding-top: 2rem;
+}
+
+.cinematic-text h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.cinematic-text p {
+  font-size: 1.4rem;
+  line-height: 1.6;
+}
+
+.two-col-cinematic {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 3rem;
+    width: 100%;
+}
+
+.cinematic-visual {
+    position: relative;
+    width: 100%;
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: visible;
+    padding-top: 10vh; 
+}
+
+
+/* Make visuals smaller */
+.mountain-stack,
+.money-stack {
+    position: absolute;
+    bottom: 0;
+    background-repeat: repeat-y;
+    background-position: center bottom;
+    background-size: contain;
+    transform: scale(0.75);
+    transform-origin: bottom center;
+}
+
+/* Shift money left */
+.money-stack {
+    width: 140px;
+    left: -40px;
+    z-index: 20;
+    background-image: url('../visuals/money-stack.png');
+}
+
+/* Shift mountains right */
+.mountain-stack {
+    width: 220px;
+    right: -40px;
+    z-index: 10;
+    background-image: url('../visuals/mountain.png');
+}
+
+
