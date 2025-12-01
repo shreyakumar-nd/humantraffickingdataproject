@@ -145,7 +145,7 @@ window.addEventListener("load", () => {
 
     for (let i = 0; i < total; i++) {
       const icon = document.createElement('div');
-      icon.textContent = i < filled ? '👤' : '⚪';
+      icon.textContent = i < filled ? '👤' : '⚫️';
       pictograph.appendChild(icon);
     }
 

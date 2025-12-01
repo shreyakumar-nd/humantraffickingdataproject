@@ -58,13 +58,13 @@ p {
 
 /* Make ALL links white */
 a {
-    color: #ffffff !important;
+    color: #e63946 !important;
     text-decoration: underline; 
 }
 
 /* Make links gray on hover */
 a:hover {
-    color: #cccccc !important;
+    color: #bb111f !important;
     text-decoration: underline;
 }
 
@@ -151,12 +151,12 @@ a:hover {
 
 /* Make links dark in this section */
 .section-light a {
-    color: #000000 !important;
+    color: #e63946 !important;
     text-decoration: underline;
 }
 
 .section-light a:hover {
-    color: #333333 !important;
+    color: #bb111f !important;
 }
 
 
@@ -177,7 +177,7 @@ a:hover {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
-    margin: 3rem 0;
+    margin: 0 0 3rem 0;
 }
 
 .profile-card {
@@ -213,6 +213,19 @@ a:hover {
     line-height: 1.6;
 }
 
+/* LIGHT PROFILE CARDS */
+.profile-grid-light {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+.profile-card-light {
+    background: #ffffff;
+    padding: 2rem;
+    border-left: 4px solid #bfbfbf;
+    transition: all 0.3s ease;
+}
 
 /* ---- AD BAR VIZ ---- */
 .ad-bar-container {
