@@ -131,6 +131,14 @@ a:hover {
     line-height: 1.6;
 }
 
+.news-image {
+    width: 100%;
+    max-width: 650px;
+    border-radius: 6px;
+    margin-top: 15px;
+    display: block;
+}
+
 
 /* NOTE ON THE DATA – light card */
 .data-note-card {
