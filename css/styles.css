@@ -1243,3 +1243,19 @@ section .content h2 {
     font-size: 0.98rem;
     color: #555555;
 }
+
+.back-to-nav {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: black;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 8px;
+    z-index: 9999;
+  }
+  
+  .back-to-nav:hover {
+    text-decoration: underline;
+  }
