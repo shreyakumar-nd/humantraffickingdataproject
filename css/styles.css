@@ -1105,4 +1105,141 @@ section .content h2 {
     background-image: url('../visuals/mountain.png');
 }
 
+/* ====== Man Sihouette and Map Section ====== */
+.silhouette-scroll-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0 3rem 0;
+    overflow: hidden;
+}
 
+.silhouette-container {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.silhouette {
+    width: 50px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.silhouette.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* MAP */
+.map-visual {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.map-visual img {
+    width: 80%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* ===== PERCEPTION VS REALITY / ICEBERG LAYOUT ===== */
+
+.iceberg-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.4fr);
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+    align-items: center;
+}
+
+.iceberg-column {
+    text-align: center;
+}
+
+.iceberg-column.iceberg-right {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.iceberg-caption {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #555555;
+    font-style: italic;
+}
+
+/* Iceberg image */
+.iceberg-visual {
+    max-width: 400px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* ===== HIDDEN REALITY CARDS + HOVER (BOTH CARDS) ===== */
+
+.hidden-card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #dddddd;
+    border-left: 4px solid #dddddd;  /* neutral by default */
+    padding: 2rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+    transition: all 0.3s ease;
+}
+
+.hidden-card:hover {
+    border-left-color: #e63946;       /* red on hover */
+    transform: translateX(5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.hidden-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: #111111;
+}
+
+.hidden-text {
+    font-size: 1rem;
+    color: #555555;
+    margin-bottom: 1rem;
+}
+
+.hidden-caption {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    color: #777777;
+}
+
+/* Highlighted online abuse stat card */
+.online-highlight-card {
+    background: #fcfcfc;
+}
+
+/* Pill with 15.6% stat */
+.online-highlight-pill {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.9rem 1.1rem;
+    margin: 0.5rem 0 0.25rem 0;
+    border-radius: 999px;
+    background: #f8f8f8;
+    border: 1px solid #e3e3e3;
+}
+
+.online-number {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #111111;
+    min-width: 4.5rem;
+}
+
+.online-label {
+    font-size: 0.98rem;
+    color: #555555;
+}
