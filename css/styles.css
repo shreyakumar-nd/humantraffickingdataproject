@@ -88,6 +88,58 @@ a:hover {
     margin: 0 auto;
 }
 
+/* Subheading for this news-style section */
+.subheading-news {
+    margin: 40px 0 20px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: left;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+}
+
+/* Article-style formatting */
+.news-article {
+    max-width: 700px;            /* narrower for reading */
+    margin: 40px auto;
+    padding: 20px 25px;
+    border-left: 3px solid #888; /* newspaper-style left border */
+    background: #f7f7f7;         /* light gray paper-ish background */
+    color: #111;
+    border-radius: 8px;
+}
+
+/* Make part of tech section feel like a news excerpt */
+.news-article .stat-large {
+    font-family: Georgia, serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    display: block;
+    font-weight: 500;
+}
+
+.news-article a {
+    font-style: italic;
+    color: #444 !important;
+    text-decoration: underline;
+}
+
+.news-article .stat-description {
+    margin-top: 14px;
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.news-image {
+    width: 100%;
+    max-width: 650px;
+    border-radius: 6px;
+    margin-top: 15px;
+    display: block;
+}
+
+
 /* NOTE ON THE DATA – light card */
 .data-note-card {
     max-width: 800px;
