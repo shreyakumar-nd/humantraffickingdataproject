@@ -1,3 +1,4 @@
+/* ---------------GENERAL WEBSITE--------------- */
 // FADE-IN ANIMATION ON SCROLL
 function checkFadeIn() {
     const elements = document.querySelectorAll('.fade-in');
@@ -9,19 +10,17 @@ function checkFadeIn() {
         }
     });
 }
+// RUN ON LOAD
+checkFadeIn();
+checkSilhouettes();
+// SCROLL EVENTS
+window.addEventListener('scroll', () => {
+    checkFadeIn();
+    updateRollingNumber();
+    checkSilhouettes();
+});
 
-// ROLLING NUMBER EFFECT (for sticky section)
-function updateRollingNumber() {
-    const numberEl = document.getElementById('rollingNumber');
-    const scrolled = window.scrollY;
-    const stickyStart = document.querySelector('.sticky-section').offsetTop;
-    const progress = Math.max(0, scrolled - stickyStart) / 1000;
-    
-    const targetNumber = 21865; 
-    const currentNumber = Math.min(Math.floor(progress * targetNumber), targetNumber);
-    numberEl.textContent = `[${currentNumber}]`;
-}
-
+/* ---------------SCALE SECTION--------------- */
 // SILHOUETTE ANIMATION 
 function checkSilhouettes() {
     const container = document.querySelector('.silhouette-container');
@@ -38,9 +37,7 @@ function checkSilhouettes() {
         });
     }
 }
-
-
-// --- CALENDAR FADE-IN WITH IMAGE BACKGROUNDS ---
+// CALENDAR ANIMATION
 document.addEventListener("DOMContentLoaded", () => {
     const monthsContainer = document.querySelector(".months");
 
@@ -62,103 +59,33 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", checkCalendars);
     checkCalendars();
 });
+// MONEY/MOUNTAIN ANIMATION
+(function() {
 
-// SCROLL EVENTS
-window.addEventListener('scroll', () => {
-    checkFadeIn();
-    updateRollingNumber();
-    checkSilhouettes();   // ⭐ ADDED FOR SILHOUETTES ⭐
-});
+  const section = document.getElementById('wealth-height-cinematic');
+  const mountain = document.querySelector('.mountain-stack');
+  const money = document.querySelector('.money-stack');
 
+  function updateCinematic() {
+   const rect = section.getBoundingClientRect();
+   const progress = Math.min(Math.max((window.innerHeight - rect.top) / (rect.height - window.innerHeight), 0), 1);
 
-// DOT MATRIX VISUALIZATION
-function initializeDotMatrix() {
-    const dotGrid = document.querySelector('.dot-grid');
-    if (!dotGrid) return;
+   const maxMountains = 8;
+   const mountainHeight = progress * maxMountains * 300;
 
-    dotGrid.innerHTML = '';
+   const maxMoneyHeight = 3000;
+   const moneyHeight = progress * maxMoneyHeight;
 
-    for (let i = 1; i <= 50; i++) {
-        const dot = document.createElement('div');
-        dot.className = 'dot runaway';
-        dotGrid.appendChild(dot);
-    }
+   mountain.style.height = `${mountainHeight}px`;
+   money.style.height = `${moneyHeight}px`;
+ }
 
-    for (let i = 51; i <= 95; i++) {
-        const dot = document.createElement('div');
-        dot.className = 'dot knew-trafficker';
-        dotGrid.appendChild(dot);
-    }
-
-    for (let i = 96; i <= 100; i++) {
-        const dot = document.createElement('div');
-        dot.className = 'dot';
-        dotGrid.appendChild(dot);
-    }
-}
-
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeDotMatrix);
-} else {
-    initializeDotMatrix();
-}
-
-window.addEventListener('load', initializeDotMatrix);
-
-// Run on load
-checkFadeIn();
-checkSilhouettes();    // ⭐ ADDED so silhouettes appear if already in view ⭐
-
-
-function drawPieChart(canvasId, femalePercent) {
-    const canvas = document.getElementById(canvasId);
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-
-    const total = 100;
-    const female = femalePercent;
-    const male = total - female;
-
-    const femaleAngle = (female / 100) * 2 * Math.PI;
-
-    ctx.beginPath();
-    ctx.moveTo(90, 90);
-    ctx.fillStyle = "#555";
-    ctx.arc(90, 90, 80, 0, 2 * Math.PI);
-    ctx.fill();
-
-    ctx.beginPath();
-    ctx.moveTo(90, 90);
-    ctx.fillStyle = "#ffffff";
-    ctx.arc(90, 90, 80, -Math.PI / 2, -Math.PI / 2 + femaleAngle);
-    ctx.fill();
-}
-
-window.addEventListener("load", () => {
-    drawPieChart("pieAll", 9);
-    drawPieChart("pieChild", 6);
-});
-
-// hospitality visualization
-(function () {
-    const pictograph = document.getElementById('pictograph');
-    const total = 100;
-    const filled = 75;
-
-    for (let i = 0; i < total; i++) {
-        const icon = document.createElement('div');
-        icon.textContent = i < filled ? '👤' : '⚫️';
-        pictograph.appendChild(icon);
-    }
-
-    window.addEventListener('scroll', () => {
-        const rect = pictograph.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-            pictograph.classList.add('show');
-        }
-    });
+  window.addEventListener('scroll', updateCinematic);
+  window.addEventListener('resize', updateCinematic);
+  updateCinematic();
 })();
 
+/* ---------------TECHNOLOGY SECTION--------------- */
 // CLEAN SPIDERWEB
 const webCanvas = document.getElementById("webVisualization");
 if (webCanvas) {
@@ -221,7 +148,6 @@ if (webCanvas) {
     window.addEventListener("scroll", updateWeb);
     updateWeb();
 }
-
 // AD BAR
 function updateAdBar() {
     const bar = document.getElementById("adBar");
@@ -259,8 +185,6 @@ function updateAdBar() {
 
 window.addEventListener("scroll", updateAdBar);
 window.addEventListener("load", updateAdBar);
-
-
 // PLATFORM CARDS
 function activatePlatformCards() {
     const platformCards = document.querySelectorAll('.platform-card');
@@ -276,33 +200,102 @@ function activatePlatformCards() {
         }
     });
 }
-
-
-// ====== Money/Mountain Animation ======
-(function() {
-
-  const section = document.getElementById('wealth-height-cinematic');
-  const mountain = document.querySelector('.mountain-stack');
-  const money = document.querySelector('.money-stack');
-
-  function updateCinematic() {
-   const rect = section.getBoundingClientRect();
-   const progress = Math.min(Math.max((window.innerHeight - rect.top) / (rect.height - window.innerHeight), 0), 1);
-
-   const maxMountains = 8;
-   const mountainHeight = progress * maxMountains * 300;
-
-   const maxMoneyHeight = 3000;
-   const moneyHeight = progress * maxMoneyHeight;
-
-   mountain.style.height = `${mountainHeight}px`;
-   money.style.height = `${moneyHeight}px`;
- }
-
-  window.addEventListener('scroll', updateCinematic);
-  window.addEventListener('resize', updateCinematic);
-  updateCinematic();
-})();
-
 window.addEventListener('scroll', activatePlatformCards);
 window.addEventListener('load', activatePlatformCards);
+
+/* ---------------PROFILES SECTION--------------- */
+// DOT MATRIX VISUALIZATION
+function initializeDotMatrix() {
+    const dotGrid = document.querySelector('.dot-grid');
+    if (!dotGrid) return;
+
+    dotGrid.innerHTML = '';
+
+    for (let i = 1; i <= 50; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'dot runaway';
+        dotGrid.appendChild(dot);
+    }
+
+    for (let i = 51; i <= 95; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'dot knew-trafficker';
+        dotGrid.appendChild(dot);
+    }
+
+    for (let i = 96; i <= 100; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'dot';
+        dotGrid.appendChild(dot);
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeDotMatrix);
+} else {
+    initializeDotMatrix();
+}
+window.addEventListener('load', initializeDotMatrix);
+// PIE CHART VISUALIZATION
+function drawPieChart(canvasId, femalePercent) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+
+    const total = 100;
+    const female = femalePercent;
+    const male = total - female;
+
+    const femaleAngle = (female / 100) * 2 * Math.PI;
+
+    ctx.beginPath();
+    ctx.moveTo(90, 90);
+    ctx.fillStyle = "#555";
+    ctx.arc(90, 90, 80, 0, 2 * Math.PI);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(90, 90);
+    ctx.fillStyle = "#ffffff";
+    ctx.arc(90, 90, 80, -Math.PI / 2, -Math.PI / 2 + femaleAngle);
+    ctx.fill();
+}
+
+window.addEventListener("load", () => {
+    drawPieChart("pieAll", 9);
+    drawPieChart("pieChild", 6);
+});
+
+/* ---------------SCROLLING STAT SECTION--------------- */
+// ROLLING NUMBER EFFECT
+function updateRollingNumber() {
+    const numberEl = document.getElementById('rollingNumber');
+    const scrolled = window.scrollY;
+    const stickyStart = document.querySelector('.sticky-section').offsetTop;
+    const progress = Math.max(0, scrolled - stickyStart) / 1000;
+    
+    const targetNumber = 21865; 
+    const currentNumber = Math.min(Math.floor(progress * targetNumber), targetNumber);
+    numberEl.textContent = `[${currentNumber}]`;
+}
+
+/* ---------------HOSPITALITY SECTION--------------- */
+// PEOPLE MATRIX VISUALIZATION
+(function () {
+    const pictograph = document.getElementById('pictograph');
+    const total = 100;
+    const filled = 75;
+
+    for (let i = 0; i < total; i++) {
+        const icon = document.createElement('div');
+        icon.textContent = i < filled ? '👤' : '⚫️';
+        pictograph.appendChild(icon);
+    }
+
+    window.addEventListener('scroll', () => {
+        const rect = pictograph.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+            pictograph.classList.add('show');
+        }
+    });
+})();
