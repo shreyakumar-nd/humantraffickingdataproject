@@ -440,6 +440,33 @@ a:hover {
     text-align: center;
 }
 
+/* HOSPITALITY SECTION */
+.hotels-visual {
+    max-width: 700px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+.profile-card-hospitality {
+    background: #ffffff;
+    padding: 0.5rem 1rem;
+    max-height: 700px;
+    border-left: 4px solid #dddddd;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+    text-align: center;
+}
+.profile-card-hospitality:hover {
+    border-left-color: #e63946;
+    transform: translateX(5px);
+}
+.profile-description-hospitality {
+    font-size: 1rem;
+    color: #555555;
+    line-height: 1.6;
+}
+
 /* CONNECTION/FLOW DIAGRAM */
 .connection-diagram {
     width: 100%;
