@@ -10,15 +10,93 @@ function checkFadeIn() {
         }
     });
 }
+// Show bottom nav only after scrolling past hero
+function updateBottomNav() {
+    const hero = document.querySelector('.hero-section');
+    const nav = document.querySelector('.bottom-nav');
+    if (!hero || !nav) return;
+    const heroRect = hero.getBoundingClientRect();
+    if (heroRect.bottom < window.innerHeight * 0.5) {
+        nav.classList.add('nav-visible');
+    } else {
+        nav.classList.remove('nav-visible');
+    }
+}
+
 // RUN ON LOAD
 checkFadeIn();
 checkSilhouettes();
+updateBottomNav();
 // SCROLL EVENTS
 window.addEventListener('scroll', () => {
     checkFadeIn();
     updateRollingNumber();
     checkSilhouettes();
+    updateBottomNav();
+    updateThreeMoments();
 });
+
+/* ---------------THREE MOMENTS SECTION--------------- */
+const MOMENTS_DATA = [
+    { img: 'visuals/person1.png', name: 'Maya', age: '15', header: "Maya's Phone", messageId: 'momentsMessageMaya' },
+    { img: 'visuals/person6.png', name: 'Jayden', age: '13', header: "Jayden's Phone", messageId: 'momentsMessageJayden' },
+    { img: 'visuals/person2.png', name: 'Aisha', age: '22', header: "Aisha's Phone", messageId: 'momentsMessageAisha' }
+];
+
+function updateThreeMoments() {
+    const section = document.getElementById('three-moments');
+    if (!section) return;
+
+    const wrapper = section.querySelector('.moments-scroll-wrapper');
+    const phone = document.getElementById('momentsPhone');
+    const persona = document.getElementById('momentsPersona');
+    const personaImg = document.getElementById('momentsPersonaImg');
+    const personaName = document.getElementById('momentsPersonaName');
+    const personaAge = document.getElementById('momentsPersonaAge');
+    const phoneHeader = document.getElementById('momentsPhoneHeader');
+    const tagline = document.getElementById('momentsTagline');
+
+    if (!wrapper || !phone || !persona) return;
+
+    const rect = section.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    const sectionHeight = wrapper.offsetHeight;
+    const scrollRange = sectionHeight - windowHeight;
+    const progress = scrollRange <= 0 ? 0 : Math.max(0, Math.min(1, -rect.top / scrollRange));
+
+    if (progress >= 0.12) {
+        phone.classList.add('visible');
+    } else {
+        phone.classList.remove('visible');
+    }
+
+    const positionProgress = Math.min(progress / 0.2, 1);
+    const shiftPx = positionProgress * -170;
+    persona.style.transform = `translateX(${shiftPx}px)`;
+
+    let activeIndex = 0;
+    if (progress >= 0.58) activeIndex = 2;
+    else if (progress >= 0.28) activeIndex = 1;
+
+    const data = MOMENTS_DATA[activeIndex];
+    personaImg.src = data.img;
+    personaImg.alt = data.name;
+    personaName.textContent = data.name;
+    personaAge.textContent = `Age ${data.age}`;
+    phoneHeader.textContent = data.header;
+
+    document.getElementById('momentsMessageMaya').classList.toggle('visible', activeIndex === 0);
+    document.getElementById('momentsMessageJayden').classList.toggle('visible', activeIndex === 1);
+    document.getElementById('momentsMessageAisha').classList.toggle('visible', activeIndex === 2);
+
+    if (progress >= 0.88) {
+        tagline.classList.add('visible');
+    } else {
+        tagline.classList.remove('visible');
+    }
+}
+
+window.addEventListener('load', updateThreeMoments);
 
 /* ---------------SCALE SECTION--------------- */
 // SILHOUETTE ANIMATION 

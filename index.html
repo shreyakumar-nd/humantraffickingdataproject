@@ -8,120 +8,100 @@
 </head>
 <body>
     <!-- PERSISTENT BUTTON THAT LEADS TO NAVIGATION -->
-    <a href="#navigation-links" class="back-to-nav">Navigation</a>
+   <!-- <a href="#navigation-links" class="back-to-nav">Navigation</a> -->
 
     <!-- INTRO SECTION -->
-    <section class="section-black">
+    <section class="section-black hero-section">
         <div class="content fade-in">
-            <h1>The Human Sex Trafficking Crisis</h1>
-            <p>The startling reality of human, sexual, and minor trafficking across the globe, and the United States' response to it.</p>
+            <h1>The crisis is hidden. The people are not.</h1>
+            <p class="hero-subheading">The concealed reality of sexual trafficking, its impact on minors, and the United States response.</p>
         </div>
+        <a href="#data-note" class="scroll-down-link" aria-label="Scroll down to explore"><span class="scroll-down-arrow">↓</span> Scroll down to explore <span class="scroll-down-arrow">↓</span></a>
     </section>
 
-    <!-- DISCLAMIER -->
-    <section class="section-black">
-        <div class="content fade-in" style="text-align: center;">
-            <h2 style="margin-bottom: 3rem;">A Note on the Data</h2>
-            
-            <div class="data-note-card">
-                <p>
-                    Human trafficking is one of the most underreported crimes in the United States.
-                </p>
-                <p>
-                    The data presented here represents only what has been documented. Inconsistencies across sources,
-                    gaps in reporting systems, and the hidden nature of trafficking mean these numbers tell an incomplete
-                    story. The true scale of this crisis remains largely hidden.
-                </p>
+    <!-- THREE MOMENTS THAT LOOK NORMAL -->
+    <section id="three-moments" class="section-black">
+        <div class="moments-scroll-wrapper">
+            <div class="moments-sticky">
+                <h2 class="moments-title">Three Moments That Look Normal</h2>
+                <div class="moments-layout">
+                    <div class="moments-persona" id="momentsPersona">
+                        <img id="momentsPersonaImg" src="visuals/person1.png" alt="Person" class="moments-persona-img">
+                        <p class="moments-persona-name" id="momentsPersonaName">Maya</p>
+                        <p class="moments-persona-age" id="momentsPersonaAge">Age 15</p>
+                    </div>
+                    <div class="moments-phone" id="momentsPhone">
+                        <div class="moments-phone-header" id="momentsPhoneHeader">Maya's Phone</div>
+                        <div class="moments-phone-body">
+                            <div class="moments-message moments-message-maya" id="momentsMessageMaya">
+                                <span class="moments-message-time">11:42 p.m.</span>
+                                <p class="moments-message-text">U up? I can help. Don't tell anyone.</p>
+                            </div>
+                            <div class="moments-message moments-message-jayden" id="momentsMessageJayden">
+                                <span class="moments-message-time">4:00 p.m.</span>
+                                <p class="moments-message-text">You're funny. You seem mature. Want to talk somewhere private?</p>
+                            </div>
+                            <div class="moments-message moments-message-aisha" id="momentsMessageAisha">
+                                <span class="moments-message-time">2:30 p.m.</span>
+                                <p class="moments-message-text">Cash today</p>
+                                <p class="moments-message-meta"><i>Job post that looks like a lifeline.</i></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="moments-tagline" id="momentsTagline">Trafficking often begins with trust.</p>
             </div>
-            
-            <div class="data-note-icons">
-                <div class="data-note-icon">
-                    <p class="data-note-symbol">?</p>
-                    <p class="data-note-label">Unknown victims</p>
-                </div>
-                <div class="data-note-icon">
-                    <p class="data-note-symbol">≠</p>
-                    <p class="data-note-label">Inconsistent data</p>
-                </div>
-                <div class="data-note-icon">
-                    <p class="data-note-symbol">...</p>
-                    <p class="data-note-label">Gaps in reporting</p>
-                </div>
-            </div>
-            
-            <p class="data-note-link">
-                <a href="https://nij.ojp.gov/topics/articles/gaps-reporting-human-trafficking-incidents-result-significant-undercounting"
-                target="_blank" rel="noopener noreferrer">
-                Learn more about data gaps in human trafficking reporting →
-                </a>
-            </p>
         </div>
     </section>
 
      <!-- NAVIGATION LINKS SECTION -->
-    <section id="navigation-links" class="section-black">
+    <!-- <section id="navigation-links" class="section-black">
         <div class="content fade-in">
             <h2>Explore the Data</h2>
             <div class="link-grid">
-                <a href="#perception-reality" class="link-card">Perception vs. Reality</a>
+                <a href="#perception-reality" class="link-card">What We See, What We Miss</a>
                 <a href="#scale-growth" class="link-card">Scale & Growth</a>
                 <a href="#technology" class="link-card">Technology</a>
-                <!-- <a href="#usresponse" class="link-card">U.S. Response</a> -->
+                <a href="#usresponse" class="link-card">U.S. Response</a>
                 <a href="#profiles" class="link-card">Profiles</a>
                 <a href="#hospitality" class="link-card">Hospitality</a>
             </div>
         </div>
-    </section>
+    </section> -->
 
-        <!-- PERCEPTION VS REALITY / TIP OF THE ICEBERG SECTION -->
+        <!-- WHAT WE SEE, WHAT WE MISS / ICEBERG SECTION -->
         <section id="perception-reality" class="section-dark">
             <div class="content">
-                <h2 class="fade-in">Perception vs. Reality</h2>
-                <p class="fade-in">
-                    News stories and court cases show only a tiny fraction of what is really happening. 
-                    Most exploitation is hidden, online, and never reported.
-                </p>
+                <h2 class="moments-title fade-in">What We See, What We Miss</h2>
+                <p class="fade-in" style="text-align: center; max-width: 42em; margin-left: auto; margin-right: auto;">
+                    The next morning, the world appears unchanged. Human trafficking hides in plain sight, blending into everyday life, while the data reflects only what is recognized, documented, and reported. Think of an iceberg:                </p>
     
                 <div class="iceberg-layout fade-in">
                     <!-- LEFT: ICEBERG IMAGE -->
                     <div class="iceberg-column">
-                        <img src="visuals/iceberg.png" alt="Iceberg visual" class="hotels-visual">
-                        <p class="iceberg-caption">
-                            What we see in headlines is just the tip of the iceberg.
-                        </p>
+                        <img src="visuals/iceberg2.png" alt="Iceberg: what we see above water, what we miss below" class="hotels-visual">
                     </div>
     
-                    <!-- RIGHT: TEXT + STAT CARDS -->
+                    <!-- RIGHT: NARRATIVE + ICEBERG LABELS + STAT -->
                     <div class="iceberg-column iceberg-right">
-                        <!-- Underreported crime card -->
+                        <!-- Above / Below water labels -->
                         <div class="hidden-card">
-                            <h3>Pervasive and Underreported</h3>
-                            <p class="hidden-text">
-                                "Child sex trafficking is a pervasive and underreported crime, and one of the most complex 
-                                forms of child exploitation."
-                            </p>
-                            <p class="hidden-caption">
-                                <a href="https://www.justice.gov/d9/2023-06/child_sex_trafficking_in_the_united_states_2.pdf"
-                                target="_blank" rel="noopener noreferrer">
-                                    U.S. Department of Justice
-                                </a>
-                            </p>
+                            <h3>Above Water</h3>
+                            <p class="hidden-text">What is reported: calls, reports, prosecutions, convictions.</p>
+                        </div>
+                        <div class="hidden-card">
+                            <h3>Below Water</h3>
+                            <p class="hidden-text">What stays hidden: grooming disguised as a relationship. Coercion disguised as “choice.” Survival mislabeled as delinquency.</p>
                         </div>
     
-                        <!-- Online abuse stat card (15.6%) -->
+                        <!-- 15.6% stat — proof the problem is in “normal” spaces -->
                         <div class="hidden-card online-highlight-card">
-                            <h3>Harm Beneath the Surface</h3>
                             <p class="hidden-text">
-                                In a national survey of 2,639 people about their experiences before age 18, researchers found that:
+                                In a survey about experiences before age 18, <strong>15.6%</strong> reported online child sexual abuse.
                             </p>
-    
-                            <div class="online-highlight-pill">
-                                <span class="online-number">15.6%</span>
-                                <span class="online-label">
-                                    experienced online child sexual abuse before turning 18
-                                </span>
-                            </div>
-    
+                            <p class="hidden-text" style="margin-top: 0.75rem;">
+                                That’s not “the whole problem.” It’s proof the problem is already in spaces that look normal.
+                            </p>
                             <p class="hidden-caption">
                                 <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9568794/"
                                 target="_blank" rel="noopener noreferrer">
@@ -673,6 +653,58 @@
             <p class="quote-attribution fade-in">— Pope Francis</p>
         </div>
     </section>
+
+    <!-- A NOTE ON THE DATA (DISCLAIMER) -->
+    <section id="data-note" class="section-black">
+        <div class="content fade-in" style="text-align: center;">
+            <h2 style="margin-bottom: 3rem;">A Note on the Data</h2>
+            
+            <div class="data-note-card">
+                <p>
+                    Human trafficking is one of the most underreported crimes in the United States.
+                </p>
+                <p>
+                    The data presented here represents only what has been documented. Inconsistencies across sources,
+                    gaps in reporting systems, and the hidden nature of trafficking mean these numbers tell an incomplete
+                    story. The true scale of this crisis remains largely hidden.
+                </p>
+            </div>
+            
+            <div class="data-note-icons">
+                <div class="data-note-icon">
+                    <p class="data-note-symbol">?</p>
+                    <p class="data-note-label">Unknown victims</p>
+                </div>
+                <div class="data-note-icon">
+                    <p class="data-note-symbol">≠</p>
+                    <p class="data-note-label">Inconsistent data</p>
+                </div>
+                <div class="data-note-icon">
+                    <p class="data-note-symbol">...</p>
+                    <p class="data-note-label">Gaps in reporting</p>
+                </div>
+            </div>
+            
+            <p class="data-note-link">
+                <a href="https://nij.ojp.gov/topics/articles/gaps-reporting-human-trafficking-incidents-result-significant-undercounting"
+                target="_blank" rel="noopener noreferrer">
+                Learn more about data gaps in human trafficking reporting →
+                </a>
+            </p>
+        </div>
+    </section>
+
+    <!-- PERSISTENT BOTTOM NAVIGATION BAR -->
+    <nav class="bottom-nav">
+        <div class="bottom-nav-container">
+            <a href="#three-moments" class="bottom-nav-btn">Prologue</a>
+            <a href="#perception-reality" class="bottom-nav-btn">What We See, What We Miss</a>
+            <a href="#scale-growth" class="bottom-nav-btn">Scale & Growth</a>
+            <a href="#technology" class="bottom-nav-btn">Technology</a>
+            <a href="#profiles" class="bottom-nav-btn">Profiles</a>
+            <a href="#hospitality" class="bottom-nav-btn">Hospitality</a>
+        </div>
+    </nav>
 
     <script src="js/script.js"></script>
 </body>
