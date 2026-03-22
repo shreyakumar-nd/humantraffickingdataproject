@@ -77,8 +77,18 @@ section.section-black:first-of-type .content {
     50% { color: #888; opacity: 0.55; }
 }
 
+/* Small label above main hero headline (smaller than h1) */
+.hero-site-title {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #555555;
+    margin: 0 0 0.75rem;
+}
+
 h1 {
-    font-size: 52px;
+    font-size: 49px;
     margin-bottom: 15px;
     font-weight: 700;
     color: #111111;
@@ -90,6 +100,64 @@ h1 {
     line-height: 1.8;
     margin-bottom: 1.5rem;
     color: #444444;
+}
+
+/* Centered lead copy (perception intro, scale section openers, etc.) */
+.section-subtext {
+    text-align: center;
+    max-width: 42em;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+}
+
+
+
+#scale-growth .content > .section-subtext + .section-subtext {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+/* Copy that continues the $236 / bills block after the scroll visualization */
+#scale-growth .wealth-cinematic + .section-subtext,
+#scale-growth .wealth-cinematic + .tagline-line {
+    margin-top: 3rem;
+}
+
+/* Block after bills/mountain (wrapper is .fade-in; tagline + UN paragraph) */
+#scale-growth #wealth-height-cinematic + .fade-in {
+    margin-top: 1.5rem;
+}
+
+#scale-growth #wealth-height-cinematic + .fade-in .section-subtext {
+    margin-bottom: 2.5rem;
+}
+
+/* Lead copy inside the silhouette block (nested p, same centering as top-level section-subtext) */
+#scale-growth .content .section-subtext {
+    text-align: center;
+    max-width: 42em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Age / sensitive content notice */
+.hero-trigger-warning {
+    background-color: #e8e8e8;
+    border-radius: 10px;
+    padding: 18px 30px;
+    max-width: 660px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 15vh;
+}
+
+.hero-trigger-warning p {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin: 0;
+    color: #333333;
 }
 
 h2 {
@@ -270,6 +338,10 @@ a:hover {
 .data-note-link a:hover {
     color: #bb111f !important;
     border-color: #bb111f;
+}
+
+.arrests {
+    margin-top: 180px;
 }
 
 /* CALENDAR VISUAL */
@@ -506,7 +578,8 @@ a:hover {
 
 .moments-scroll-wrapper {
     position: relative;
-    height: 150vh;
+    /* Taller = more scrolling before switching between the three moments */
+    height: 300vh;
     width: 100%;
 }
 
@@ -651,11 +724,23 @@ a:hover {
     padding: 0 0.25rem;
 }
 
+/* Shared emphasis line (same look as moments tagline; use .moments-tagline only in #three-moments — it relies on JS .visible for opacity) */
+.tagline-line,
 .moments-tagline {
     font-size: 1.4rem;
     font-weight: 500;
     color: #111111;
     text-align: center;
+}
+
+.tagline-line {
+    max-width: 42em;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+}
+
+.moments-tagline {
     margin-top: 2rem;
     opacity: 0;
     transition: opacity 0.4s ease;
@@ -1283,102 +1368,141 @@ section .content h2 {
     margin: 0;
 }
 
-/* ====== Mountain Money Section ====== */
+/* ====== $236B bills → mountain scroll section ====== */
 
-.cinematic-section {
-  position: relative;
-  width: 100%;
-  height: 200vh; /* long scroll */
-  background: transparent; 
-  color: white;
-  overflow: visible;
-  padding: 0;
-  margin: 0;
-}
-
-.cinematic-text {
-  z-index: 5;
-  max-width: 650px;
-  padding-top: 0;
-}
-
-.cinematic-text h2 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.cinematic-text p {
-  font-size: 1.4rem;
-  line-height: 1.6;
-}
-
-.two-col-cinematic {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    gap: 3rem;
-    width: 100%;
-}
-
-.cinematic-visual {
+.wealth-cinematic {
     position: relative;
     width: 100%;
-    height: 75vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    height: 165vh;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    display: block;
     overflow: visible;
-    padding-top: 10vh; 
 }
 
+.wealth-cinematic-sticky {
+    position: sticky;
+    top: 0;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 6vh;
+    overflow-x: hidden;
+    overflow-y: visible;
+}
 
-/* Make visuals smaller */
-.mountain-stack,
-.money-stack {
+.wealth-intro-text {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    max-width: 42em;
+    margin-bottom: 2rem;
+}
+
+/* Bills + mountain image share one row; stack bottom aligns with image bottom */
+.wealth-visual-anchor {
+    position: relative;
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    flex-shrink: 0;
+}
+
+.wealth-mountain-row {
+    position: relative;
+    width: 100%;
+    overflow: visible;
+}
+
+.wealth-bills-layer {
     position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
     bottom: 0;
-    background-repeat: repeat-y;
-    background-position: center bottom;
-    background-size: contain;
-    transform: scale(0.75);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.wealth-bill {
+    position: absolute;
+    left: 50%;
+    width: min(92vw, 560px);
+    height: auto;
+    display: block;
     transform-origin: bottom center;
+    will-change: transform, opacity;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.12));
 }
 
-/* Shift money left */
-.money-stack {
-    width: 140px;
-    left: -40px;
-    z-index: 20;
-    background-image: url('../visuals/money-stack.png');
+.wealth-mountain-fade {
+    position: relative;
+    z-index: 12;
+    width: 100%;
+    max-width: min(92vw, 560px);
+    margin: 0 auto;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s linear;
 }
 
-/* Shift mountains right */
-.mountain-stack {
-    width: 220px;
-    right: -40px;
-    z-index: 10;
-    background-image: url('../visuals/mountain.png');
+.wealth-mountain-img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
-/* ====== Man Sihouette and Map Section ====== */
+.wealth-mountain-caption {
+    margin-top: 1rem;
+    margin-bottom: 0;
+    padding: 0 1.25rem;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s linear;
+}
+
+.wealth-mountain-text {
+    position: relative;
+    z-index: 2;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin: 0;
+    padding: 0;
+    color: #444444;
+    max-width: 42em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ====== Person icons row and map section ====== */
 .silhouette-scroll-wrapper {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin: 2rem 0 3rem 0;
+    margin: 0 0 0px 0;
     overflow: hidden;
 }
 
 .silhouette-container {
     display: flex;
-    gap: 1.5rem;
+    gap: 0;
 }
 
 .silhouette {
     width: 50px;
+    display: block;
+    margin-left: -1px;
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.silhouette:first-child {
+    margin-left: 0;
 }
 
 .silhouette.visible {
@@ -1387,13 +1511,15 @@ section .content h2 {
 }
 /* MAP */
 .map-visual {
-    margin: 2rem 0;
+    margin: 0 0;
     text-align: center;
+    margin-bottom: 80px;
+    margin-top: 20px;
 }
 
 .map-visual img {
     width: 80%;
-    max-width: 800px;
+    max-width: 750px;
     height: auto;
     border-radius: 8px;
 }
@@ -1446,18 +1572,13 @@ section .content h2 {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 12px;
     border: 1px solid #dddddd;
-    border-left: 4px solid #dddddd;  /* neutral by default */
     padding: 2rem;
     padding-top: 25px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.04);
     transition: all 0.3s ease;
 }
 
-.hidden-card:hover {
-    border-left-color: var(--red);       /* red on hover */
-    transform: translateX(5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-}
+
 
 .hidden-card h3 {
     font-size: 1.6rem;
@@ -1535,7 +1656,7 @@ section .content h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--white);
+    
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.4s ease;
@@ -1547,7 +1668,7 @@ section .content h2 {
 }
 
 .bottom-nav-container {
-
+    background-color: var(--white);
     display: flex;
     width: auto;
     height: auto;
