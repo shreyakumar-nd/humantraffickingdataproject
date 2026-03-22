@@ -74,9 +74,10 @@ function updateThreeMoments() {
     const shiftPx = positionProgress * -170;
     persona.style.transform = `translateX(${shiftPx}px)`;
 
+    /* Wider progress bands = more scroll between each persona/phone moment */
     let activeIndex = 0;
-    if (progress >= 0.58) activeIndex = 2;
-    else if (progress >= 0.28) activeIndex = 1;
+    if (progress >= 0.62) activeIndex = 2;
+    else if (progress >= 0.31) activeIndex = 1;
 
     const data = MOMENTS_DATA[activeIndex];
     personaImg.src = data.img;
@@ -89,7 +90,7 @@ function updateThreeMoments() {
     document.getElementById('momentsMessageJayden').classList.toggle('visible', activeIndex === 1);
     document.getElementById('momentsMessageAisha').classList.toggle('visible', activeIndex === 2);
 
-    if (progress >= 0.88) {
+    if (progress >= 0.92) {
         tagline.classList.add('visible');
     } else {
         tagline.classList.remove('visible');
@@ -137,30 +138,102 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", checkCalendars);
     checkCalendars();
 });
-// MONEY/MOUNTAIN ANIMATION
-(function() {
+// $236B: bills slide from alternate sides into a stack, then mountain2 + stat
+(function () {
+    const section = document.getElementById('wealth-height-cinematic');
+    const billsLayer = document.getElementById('wealthBillsLayer');
+    const mountainLayer = document.getElementById('wealthMountainLayer');
+    const mountainCaption = document.getElementById('wealthMountainCaption');
+    if (!section || !billsLayer || !mountainLayer || !mountainCaption) return;
 
-  const section = document.getElementById('wealth-height-cinematic');
-  const mountain = document.querySelector('.mountain-stack');
-  const money = document.querySelector('.money-stack');
+    const BILL_COUNT = 48;
+    const BILL_IMG = 'visuals/bill.png';
+    /** Stack completes in this fraction of scroll progress (lower = less scrolling to finish the stack) */
+    const STACK_PROGRESS_END = 0.48;
+    /** Mountain + bill crossfade uses the rest of the scroll — ends at 1 so there’s no dead scroll after */
+    const MOUNTAIN_FADE_START = 0.4;
+    const MOUNTAIN_FADE_END = 1;
 
-  function updateCinematic() {
-   const rect = section.getBoundingClientRect();
-   const progress = Math.min(Math.max((window.innerHeight - rect.top) / (rect.height - window.innerHeight), 0), 1);
+    /** Matches .wealth-mountain-img: max-width min(92vw, 560px) */
+    function mountainImageWidthPx() {
+        return Math.min(window.innerWidth * 0.92, 560);
+    }
 
-   const maxMountains = 8;
-   const mountainHeight = progress * maxMountains * 300;
+    function smoothstep(t) {
+        const x = Math.max(0, Math.min(1, t));
+        return x * x * (3 - 2 * x);
+    }
 
-   const maxMoneyHeight = 3000;
-   const moneyHeight = progress * maxMoneyHeight;
+    for (let i = 0; i < BILL_COUNT; i++) {
+        const img = document.createElement('img');
+        img.src = BILL_IMG;
+        img.alt = '';
+        img.className = 'wealth-bill';
+        img.decoding = 'async';
+        billsLayer.appendChild(img);
+    }
 
-   mountain.style.height = `${mountainHeight}px`;
-   money.style.height = `${moneyHeight}px`;
- }
+    const bills = billsLayer.querySelectorAll('.wealth-bill');
 
-  window.addEventListener('scroll', updateCinematic);
-  window.addEventListener('resize', updateCinematic);
-  updateCinematic();
+    function updateWealthCinematic() {
+        const rect = section.getBoundingClientRect();
+        const scrollRange = section.offsetHeight - window.innerHeight;
+        const progress = scrollRange <= 0 ? 0 : Math.max(0, Math.min(1, -rect.top / scrollRange));
+
+        const stackCap = STACK_PROGRESS_END;
+        const baseBillW = mountainImageWidthPx();
+        const maxSlide = Math.min(window.innerWidth * 0.42, baseBillW * 0.65);
+
+        const introEl = document.querySelector('.wealth-cinematic-sticky .wealth-intro-text');
+        const rowEl = document.querySelector('.wealth-mountain-row');
+        let firstBillDropPx = 150;
+        if (introEl && rowEl) {
+            const ib = introEl.getBoundingClientRect().bottom;
+            const rb = rowEl.getBoundingClientRect().bottom;
+            const span = rb - ib - 10;
+            /* Shorter drop = first bill starts lower on the page (closer to stack base) */
+            firstBillDropPx = Math.max(65, Math.min(span * 0.5, window.innerHeight * 0.26));
+        }
+
+        bills.forEach((bill, i) => {
+            const fromLeft = i % 2 === 0;
+            const span = stackCap / BILL_COUNT;
+            const t0 = (i / BILL_COUNT) * stackCap;
+            const raw = span > 0 ? (progress - t0) / span : 1;
+            const local = smoothstep(raw);
+            const slide =
+                i === 0 ? 0 : (1 - local) * maxSlide * (fromLeft ? -1 : 1);
+            const slideY = i === 0 ? (1 - local) * -firstBillDropPx : 0;
+            const bottomPx = i * 4;
+            const stackScale = Math.max(0.62, 1 - i * 0.006);
+            const billW = baseBillW * stackScale;
+            bill.style.width = `${billW}px`;
+            bill.style.bottom = `${bottomPx}px`;
+            bill.style.zIndex = String(i);
+            bill.style.transform = `translate(-50%, ${slideY}px) translateX(${slide}px)`;
+            bill.style.opacity = String(local);
+        });
+
+        let mountainT = 0;
+        if (progress >= MOUNTAIN_FADE_START) {
+            mountainT = (progress - MOUNTAIN_FADE_START) / (MOUNTAIN_FADE_END - MOUNTAIN_FADE_START);
+            mountainT = Math.max(0, Math.min(1, mountainT));
+        }
+        const mountainOpacity = String(smoothstep(mountainT));
+        mountainLayer.style.opacity = mountainOpacity;
+        mountainCaption.style.opacity = mountainOpacity;
+        const mountainInteractive = mountainT > 0.95 ? 'auto' : 'none';
+        mountainLayer.style.pointerEvents = mountainInteractive;
+        mountainCaption.style.pointerEvents = mountainInteractive;
+
+        const billsFade = 1 - smoothstep((progress - MOUNTAIN_FADE_START) / (MOUNTAIN_FADE_END - MOUNTAIN_FADE_START + 0.001));
+        billsLayer.style.opacity = String(Math.max(0, Math.min(1, billsFade)));
+    }
+
+    window.addEventListener('scroll', updateWealthCinematic, { passive: true });
+    window.addEventListener('resize', updateWealthCinematic);
+    window.addEventListener('load', updateWealthCinematic);
+    updateWealthCinematic();
 })();
 
 /* ---------------TECHNOLOGY SECTION--------------- */
