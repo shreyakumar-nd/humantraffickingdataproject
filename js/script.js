@@ -116,27 +116,72 @@ function checkSilhouettes() {
         });
     }
 }
-// CALENDAR ANIMATION
+// CALENDAR (v2: 4-year day-grid)
 document.addEventListener("DOMContentLoaded", () => {
-    const monthsContainer = document.querySelector(".months");
+    const mount = document.getElementById("arrestCalendar");
+    if (!mount) return;
 
-    for (let i = 0; i < 48; i++) {
-        const monthEl = document.createElement("div");
-        monthEl.classList.add("month", "has-image");
-        monthsContainer.appendChild(monthEl);
-    }
+    const ARRESTS = 1416;
+    const TECH_PCT = 0.673;
+    const BACKPAGE_CASES = 592;
 
-    function checkCalendars() {
-        document.querySelectorAll(".month").forEach(m => {
-            const rect = m.getBoundingClientRect();
-            if (rect.top < window.innerHeight * 0.85) {
-                m.classList.add("visible");
-            }
+    const YEAR_DAYS = [365, 365, 366, 365];
+    const TOTAL_DAYS = YEAR_DAYS.reduce((a, b) => a + b, 0);
+
+    const TECH_CASES = Math.round(ARRESTS * TECH_PCT);
+    const OTHER_TECH = Math.max(0, TECH_CASES - BACKPAGE_CASES);
+    const NONTECH = ARRESTS - TECH_CASES;
+    const NO_ARREST = TOTAL_DAYS - ARRESTS;
+
+    const dayStates = [
+        ...Array(BACKPAGE_CASES).fill("backpage"),
+        ...Array(OTHER_TECH).fill("tech"),
+        ...Array(NONTECH).fill("nontech"),
+        ...Array(NO_ARREST).fill("empty"),
+    ];
+
+    let offset = 0;
+    YEAR_DAYS.forEach((daysInYear, yearIdx) => {
+        const block = document.createElement("div");
+        block.className = "year-block";
+        block.innerHTML = `
+            <div class="year-label">Year ${yearIdx + 1}</div>
+            <div class="year-grid"></div>
+        `;
+
+        const grid = block.querySelector(".year-grid");
+        const CELLS = 371;
+
+        for (let i = 0; i < CELLS; i++) {
+            const cell = document.createElement("div");
+            cell.className = "day empty";
+            grid.appendChild(cell);
+        }
+
+        for (let d = 0; d < daysInYear; d++) {
+            const state = dayStates[offset + d];
+            const cell = grid.children[d];
+            cell.className = `day ${state}`;
+            cell.title =
+                state === "backpage" ? "Arrest: Backpage involved" :
+                state === "tech" ? "Arrest: technology involved" :
+                state === "nontech" ? "Arrest: no technology listed" :
+                "No arrest day (in this 4-year illustration)";
+        }
+
+        offset += daysInYear;
+        mount.appendChild(block);
+    });
+
+    function revealYearBlocks() {
+        document.querySelectorAll(".year-block").forEach((b) => {
+            const rect = b.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 0.85) b.classList.add("visible");
         });
     }
 
-    window.addEventListener("scroll", checkCalendars);
-    checkCalendars();
+    window.addEventListener("scroll", revealYearBlocks);
+    revealYearBlocks();
 });
 // $236B: bills slide from alternate sides into a stack, then mountain2 + stat
 (function () {

@@ -185,9 +185,32 @@
                     </span>
                     <p class="stat-description">That is about one arrest every day for four years.</p>
                     
-                    <!-- CALENDAR VISUAL -->
-                    <div class="calendar-visual">
-                        <div class="months"></div>
+                    <!-- CALENDAR VISUAL (v2: day-grid) -->
+                    <div class="calendar-visual calendar-v2">
+                        <div class="calendar-meta">
+                            <div class="calendar-stat">
+                                <div class="calendar-stat-num">1,416</div>
+                                <div class="calendar-stat-label">arrests (2010–2015)</div>
+                            </div>
+                            <div class="calendar-stat">
+                                <div class="calendar-stat-num">67.3%</div>
+                                <div class="calendar-stat-label">used technology</div>
+                            </div>
+                            <div class="calendar-stat">
+                                <div class="calendar-stat-num">41.8%</div>
+                                <div class="calendar-stat-label">used Backpage</div>
+                            </div>
+                        </div>
+
+                        <div id="arrestCalendar" class="calendar-years" aria-label="Four-year calendar visualization"></div>
+
+                        <div class="calendar-legend">
+                            <span class="legend-item"><span class="swatch backpage"></span>Backpage</span>
+                            <span class="legend-item"><span class="swatch tech"></span>Other tech</span>
+                            <span class="legend-item"><span class="swatch nontech"></span>No tech listed</span>
+                            <span class="legend-item"><span class="swatch empty"></span>No arrest day</span>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -250,6 +273,32 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Shelter-in-Place Spike -->
+            <div class="shelter-spike-card fade-in">
+                <h3 class="shelter-spike-title">Shelter-in-Place Spike</h3>
+                <p class="shelter-spike-subtitle">Crisis trafficking cases handled by the U.S. National Human Trafficking Hotline increased by 40%+ during the COVID-19 pandemic.</p>
+                <div class="shelter-spike-bars">
+                    <div class="shelter-spike-bar-wrap">
+                        <div class="shelter-spike-bar-container">
+                            <div class="shelter-spike-bar shelter-spike-bar-pre" style="height: 67%;"></div>
+                        </div>
+                        <span class="shelter-spike-bar-label">Pre (Feb 14–Mar 15, 2020)</span>
+                        <span class="shelter-spike-bar-value">~60 crisis cases</span>
+                    </div>
+                    <div class="shelter-spike-bar-wrap">
+                        <div class="shelter-spike-bar-container">
+                            <div class="shelter-spike-bar shelter-spike-bar-post" style="height: 100%;"></div>
+                        </div>
+                        <span class="shelter-spike-bar-label">Post (Apr 1–Apr 30, 2020)</span>
+                        <span class="shelter-spike-bar-value">~90 crisis cases</span>
+                    </div>
+                </div>
+                <div class="shelter-spike-callout">↑ 40%+</div>
+                <p class="shelter-spike-footnote">Crisis cases = situations needing help within 24 hours (shelter/transport/law enforcement).</p>
+                <p class="shelter-spike-source"><a href="https://polarisproject.org/wp-content/uploads/2022/01/Human-Trafficking-Trends-in-2020-by-Polaris.pdf" target="_blank" rel="noopener noreferrer">Polaris (June 10, 2020)</a></p>
+            </div>
+
         <div style="height: 60px;"></div>
         <h3 class="subheading-news fade-in">Recent Reports & Investigations</h3>
             <div class="news-article fade-in">
@@ -616,6 +665,54 @@
                     </div>
                 </div>
             </section>
+
+            <!-- Hotel Training Impact Visualization -->
+            <section class="hotel-training-viz fade-in" id="hotel-training-viz" aria-labelledby="hotel-training-headline">
+                <p class="sr-only" id="hotel-training-sr">
+                    12 states now require hotel anti-trafficking training. Over 800,000 hotel employees have been trained.
+                </p>
+                <h2 class="hotel-training-viz__headline" id="hotel-training-headline">Hotels are Becoming Proactive</h2>
+                <div class="hotel-training-viz__panels">
+                    <div class="hotel-training-viz__panel" aria-labelledby="panel-mandates-label">
+                        <p class="hotel-training-viz__panel-title" id="panel-mandates-label">Mandates</p>
+                        <div class="hotel-training-viz__stat">12</div>
+                        <p class="hotel-training-viz__label">States with mandatory hotel anti-trafficking training</p>
+                        <div class="hotel-training-viz__state-chips" id="hotel-training-state-chips" aria-hidden="true"></div>
+                        <div class="hotel-training-viz__mandates-visual" aria-hidden="true">
+                            <div class="hotel-training-viz__map-wrap">
+                                <img src="visuals/us-map-outline.png" alt="" class="hotel-training-viz__us-map">
+                                <span class="hotel-training-viz__map-dot" style="left: 22%; top: 22%;"></span>
+                                <span class="hotel-training-viz__map-dot" style="left: 30%; top: 18%;"></span>
+                                <span class="hotel-training-viz__map-dot" style="left: 38%; top: 26%;"></span>
+                                <span class="hotel-training-viz__map-dot" style="left: 44%; top: 18%;"></span>
+                                <span class="hotel-training-viz__map-dot" style="left: 52%; top: 24%;"></span>
+                                <span class="hotel-training-viz__map-dot" style="left: 58%; top: 32%;"></span>
+                                <span class="hotel-training-viz__map-dot" style="left: 54%; top: 44%;"></span>
+                                <span class="hotel-training-viz__map-dot" style="left: 38%; top: 40%;"></span>
+                                <span class="hotel-training-viz__map-dot" style="left: 30%; top: 44%;"></span>
+                                <span class="hotel-training-viz__map-dot" style="left: 24%; top: 40%;"></span>
+                                <span class="hotel-training-viz__map-dot" style="left: 50%; top: 50%;"></span>
+                                <span class="hotel-training-viz__map-dot" style="left: 60%; top: 38%;"></span>
+                            </div>
+                            <div class="hotel-training-viz__mandates-badge">
+                                <span class="hotel-training-viz__mandates-dot"></span>
+                                <span>Mandatory training policies</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hotel-training-viz__panel" aria-labelledby="panel-reach-label">
+                        <p class="hotel-training-viz__panel-title" id="panel-reach-label">Reach</p>
+                        <div class="hotel-training-viz__counter" id="hotel-training-counter" aria-live="polite">0</div>
+                        <p class="hotel-training-viz__label">Hotel employees trained</p>
+                        <div class="hotel-training-viz__dot-grid" id="hotel-training-dots" aria-hidden="true"></div>
+                        <p class="hotel-training-viz__legend">1 square = 10,000 employees</p>
+                    </div>
+                </div>
+                <p class="hotel-training-viz__source">
+                    <a href="https://theexodusroad.com/human-trafficking-us-hotels/#:~:text=This%20task%20may%20seem%20impossible,every%20state%20within%20the%20U.S." target="_blank" rel="noopener noreferrer">The Exodus Road</a>
+                </p>
+            </section>
+
                 <div class="fade-in">
                     <span class="stat-large">A case filed in January 2024 stated that plaintiffs in 113 total actions pending in over 20 districts allege that they are victims of sex trafficking that occurred at hotel properties located across the country. Some of them are suggesting the centralization of individual lawsuits into one Multidistrict Litigation.
                      – <a href="https://cases.justia.com/federal/district-courts/none/jpml/2:2024cv02322/1676195/49/0.pdf" target="_blank" rel="noopener noreferrer">United States Judicial Panel on Multidistrict Litigation (MDL No. 3104)</a>
@@ -709,6 +806,49 @@
         </div>
     </nav>
 
+    <script>
+        (function() {
+            'use strict';
+            var trainingMandateStates = [];
+            var TARGET_COUNT = 800000;
+            var DOT_VALUE = 10000;
+            var section = document.getElementById('hotel-training-viz');
+            if (!section) return;
+            var counterEl = document.getElementById('hotel-training-counter');
+            var dotsEl = document.getElementById('hotel-training-dots');
+            var chipsEl = document.getElementById('hotel-training-state-chips');
+            if (chipsEl && trainingMandateStates && trainingMandateStates.length > 0) {
+                chipsEl.setAttribute('aria-hidden', 'false');
+                chipsEl.innerHTML = trainingMandateStates.map(function(s) {
+                    return '<span class="hotel-training-viz__state-chip">' + s + '</span>';
+                }).join('');
+            }
+            var totalDots = Math.ceil(TARGET_COUNT / DOT_VALUE);
+            if (dotsEl) {
+                for (var i = 0; i < totalDots; i++) {
+                    var d = document.createElement('div');
+                    d.className = 'hotel-training-viz__dot';
+                    d.dataset.index = i;
+                    dotsEl.appendChild(d);
+                }
+            }
+            function updateHotelTrainingViz() {
+                if (!counterEl || !dotsEl) return;
+                var rect = section.getBoundingClientRect();
+                var windowHeight = window.innerHeight;
+                var progress = rect.top > windowHeight * 0.5 ? 0 : 1 - (rect.top / (windowHeight * 0.5));
+                progress = Math.max(0, Math.min(1, progress));
+                var filledCount = Math.floor(progress * totalDots);
+                var current = Math.floor(progress * TARGET_COUNT);
+                counterEl.textContent = progress >= 1 ? (TARGET_COUNT).toLocaleString() + '+' : current.toLocaleString();
+                var dots = dotsEl.querySelectorAll('.hotel-training-viz__dot');
+                for (var j = 0; j < dots.length; j++) dots[j].classList.toggle('filled', j < filledCount);
+            }
+            window.addEventListener('scroll', updateHotelTrainingViz);
+            window.addEventListener('load', updateHotelTrainingViz);
+            updateHotelTrainingViz();
+        })();
+    </script>
     <script src="js/script.js"></script>
 </body>
 </html>
