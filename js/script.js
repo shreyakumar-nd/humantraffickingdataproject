@@ -399,6 +399,51 @@ function activatePlatformCards() {
 window.addEventListener('scroll', activatePlatformCards);
 window.addEventListener('load', activatePlatformCards);
 
+// Technology image scroll crossfades
+function initializeTechScrollCrossfades() {
+    const containers = document.querySelectorAll('.tech-scroll-crossfade');
+    if (!containers.length) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const updaters = [];
+    containers.forEach((container) => {
+        const first = container.querySelector('.tech-crossfade-image--first');
+        const second = container.querySelector('.tech-crossfade-image--second');
+        if (!first || !second) return;
+
+        if (prefersReducedMotion) {
+            first.style.opacity = '1';
+            second.style.opacity = '0';
+            return;
+        }
+
+        const updateCrossfade = () => {
+            const rect = container.getBoundingClientRect();
+            const viewport = window.innerHeight;
+            const start = viewport * 0.48;
+            const end = viewport * 0.2;
+            const rawProgress = Math.max(0, Math.min(1, (start - rect.top) / (start - end)));
+            const progress = Math.pow(rawProgress, 2.0);
+
+            first.style.opacity = String(1 - progress);
+            second.style.opacity = String(progress);
+        };
+
+        updaters.push(updateCrossfade);
+        updateCrossfade();
+    });
+
+    if (!updaters.length) return;
+    const updateAllCrossfades = () => updaters.forEach((update) => update());
+
+    window.addEventListener('scroll', updateAllCrossfades, { passive: true });
+    window.addEventListener('resize', updateAllCrossfades);
+    window.addEventListener('load', updateAllCrossfades);
+}
+
+initializeTechScrollCrossfades();
+
 /* ---------------PROFILES SECTION--------------- */
 // DOT MATRIX VISUALIZATION
 function initializeDotMatrix() {

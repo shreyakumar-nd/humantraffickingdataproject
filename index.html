@@ -179,63 +179,117 @@
                     <p class="tagline-line">And crises don’t pause exploitation, they reshape it.</p>
                     <p class="section-subtext">The <a href="https://www.unodc.org/unodc/en/human-trafficking/global-report.html" target="_blank" rel="noopener noreferrer">UN Office on Drugs and Crime</a> reports that detected trafficking victims in 2022 were 25% higher than in 2019, with child victims up 31%. In 2024, of more than 29,000 children reported missing, 1 in 7 were likely child victims (<a href="https://www.missingkids.org/KeyFacts" target="_blank" rel="noopener noreferrer">National Center for Missing &amp; Exploited Children</a>).</p>
                 </div>
-                <div class="fade-in">
-                    <span class="stat-large arrests">1,416 persons were arrested for sex trafficking of a minor in the United States from 2010 to 2015
-                    – <a href="https://www.mccaininstitute.org/resources/reports/a-six-year-analysis-of-sex-traffickers-of-minors/" target="_blank" rel="noopener noreferrer">McCain</a>
-                    </span>
-                    <p class="stat-description">That is about one arrest every day for four years.</p>
-                    
-                    <!-- CALENDAR VISUAL (v2: day-grid) -->
-                    <div class="calendar-visual calendar-v2">
-                        <div class="calendar-meta">
-                            <div class="calendar-stat">
-                                <div class="calendar-stat-num">1,416</div>
-                                <div class="calendar-stat-label">arrests (2010–2015)</div>
-                            </div>
-                            <div class="calendar-stat">
-                                <div class="calendar-stat-num">67.3%</div>
-                                <div class="calendar-stat-label">used technology</div>
-                            </div>
-                            <div class="calendar-stat">
-                                <div class="calendar-stat-num">41.8%</div>
-                                <div class="calendar-stat-label">used Backpage</div>
-                            </div>
-                        </div>
-
-                        <div id="arrestCalendar" class="calendar-years" aria-label="Four-year calendar visualization"></div>
-
-                        <div class="calendar-legend">
-                            <span class="legend-item"><span class="swatch backpage"></span>Backpage</span>
-                            <span class="legend-item"><span class="swatch tech"></span>Other tech</span>
-                            <span class="legend-item"><span class="swatch nontech"></span>No tech listed</span>
-                            <span class="legend-item"><span class="swatch empty"></span>No arrest day</span>
-                        </div>
-
-                    </div>
-                </div>
             </div>
         </section>
                     
   <!-- TECHNOLOGY SECTION -->
     <section id="technology" class="section-light">
         <div class="content">
-            <h2 class="fade-in">The Role of Technology</h2>
-            <div class="fade-in">
-                <span class="stat-large">
+            <h2 class="fade-in technology-effect-title">Technology's Effect</h2>
+            <p class="fade-in section-subtext">
+                If you asked Maya where it started, she might say loneliness. If you asked where it moved, she’d point to her phone.
+            </p>
+            <img
+                src="visuals/thorn-1-in-4.png"
+                alt="Illustration of youth online interaction risk"
+                class="tech-thorn-image fade-in"
+                loading="lazy"
+            >
+            <p class="fade-in section-subtext tech-2020-stat">
+                1 in 4 young people report being sexually solicited online before turning 18 — 
+                <a href="https://www.thorn.org/press-releases/new-research-1-in-4-young-people-report-receiving-a-commercial-sexual-solicitation-online-before-turning-18/?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">Thorn</a>.
+            </p>
+            <div class="divider"></div>
+            <p class="fade-in section-subtext tech-icat-stat">
+                More than 6 in 10 (66%) children with internet access interact daily online with people they don’t know.
+                – <a href="https://www.savethechildren.net/news/two-thirds-children-interact-daily-online-people-they-dont-know-despite-grooming-fears-report" target="_blank" rel="noopener noreferrer">Save the Children</a>
+            </p>
+            <div class="tech-scroll-crossfade fade-in" id="techScrollCrossfade" aria-hidden="true">
+                <img
+                    src="visuals/online-network-scene.png"
+                    alt=""
+                    class="tech-crossfade-image tech-crossfade-image--first"
+                    loading="lazy"
+                >
+                <img
+                    src="visuals/online-predator-scene.png"
+                    alt=""
+                    class="tech-crossfade-image tech-crossfade-image--second"
+                    loading="lazy"
+                >
+            </div>
+            <div class="divider"></div>
+            <p class="fade-in section-subtext tech-icat-stat">
+                From Jan 1 to Jun 30, 2025, NCMEC reports that generative AI related CyberTipline reports surged year over year from 6,835 to 440,419.
+                – <a href="https://www.missingkids.org/blog/2025/spike-in-online-crimes-against-children-a-wake-up-call?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">NCMEC</a>
+            </p>
+            <div class="tech-scroll-crossfade fade-in" id="techAiCrossfade" aria-hidden="true">
+                <img
+                    src="visuals/ai-cybertipline-before.png"
+                    alt=""
+                    class="tech-crossfade-image tech-crossfade-image--first"
+                    loading="lazy"
+                >
+                <img
+                    src="visuals/ai-cybertipline-after.png"
+                    alt=""
+                    class="tech-crossfade-image tech-crossfade-image--second"
+                    loading="lazy"
+                >
+            </div>
+            <div class="divider"></div>
+                <div class="fade-in">
+                <p class="section-subtext tech-icat-stat">
                     The National Center for Missing and Exploited Children in the US reported an 846% increase from 2010 to 2015 in reports of suspected child sex trafficking – an increase the organization has found to be ‘directly correlated to the increased use of the Internet to sell children for sex.’
                     – <a href="https://icat.un.org/sites/g/files/tmzbdl461/files/human_trafficking_and_technology_trends_challenges_and_opportunities_web.pdf" target="_blank" rel="noopener noreferrer">ICAT</a>
-                </span>
-                <!-- The Visualization Canvas -->
-                <div class="web-graphic-container fade-in">
-                    <canvas id="webVisualization"></canvas>
+                </p>
+                <img
+                    src="visuals/icat-846.png"
+                    alt="Illustration showing a rise in suspected child sex trafficking reports from 2010 to 2015"
+                    class="tech-icat-image"
+                    loading="lazy"
+                >
+            </div>
+            <div class="fade-in">
+                <p class="section-subtext tech-icat-stat">Specifically, 1,416 people were arrested for sex trafficking of a minor in the United States from 2010 to 2015
+                – <a href="https://www.mccaininstitute.org/resources/reports/a-six-year-analysis-of-sex-traffickers-of-minors/" target="_blank" rel="noopener noreferrer">McCain</a>
+                </p>
+                <p class="section-subtext tech-icat-stat">That is about one arrest every day for four years.</p>
+
+                <!-- CALENDAR VISUAL (v2: day-grid) -->
+                <div class="calendar-visual calendar-v2">
+                    <div class="calendar-meta">
+                        <div class="calendar-stat">
+                            <div class="calendar-stat-num">1,416</div>
+                            <div class="calendar-stat-label">arrests (2010–2015)</div>
+                        </div>
+                        <div class="calendar-stat">
+                            <div class="calendar-stat-num">67.3%</div>
+                            <div class="calendar-stat-label">used technology</div>
+                        </div>
+                        <div class="calendar-stat">
+                            <div class="calendar-stat-num">41.8%</div>
+                            <div class="calendar-stat-label">used Backpage</div>
+                        </div>
+                    </div>
+
+                    <div id="arrestCalendar" class="calendar-years" aria-label="Four-year calendar visualization"></div>
+
+                    <div class="calendar-legend">
+                        <span class="legend-item"><span class="swatch backpage"></span>Backpage</span>
+                        <span class="legend-item"><span class="swatch tech"></span>Other tech</span>
+                        <span class="legend-item"><span class="swatch nontech"></span>No tech listed</span>
+                        <span class="legend-item"><span class="swatch empty"></span>No arrest day</span>
+                    </div>
+
                 </div>
             </div>
             <div class="divider"></div>
             <div class="fade-in">
-                <span class="stat-large">
+                <p class="section-subtext tech-2020-stat">
                     In 2020, over 80% of the U.S. Department of Justice’s sex trafficking prosecutions involved online advertising.
                     – <a href="https://www.unodc.org/unodc/human-trafficking/Webstories2021/the-role-of-technology-in-human-trafficking.html" target="_blank" rel="noopener noreferrer">United Nations</a>
-                </span>
+                </p>
                 <div class="ad-bar-container fade-in">
                     <div id="adBar" class="ad-bar">
                         <!-- 10 blocks -->
@@ -254,10 +308,21 @@
             </div>
             <div class="divider"></div>
             <div class="fade-in">
-                <span class="stat-large">
+                <p class="section-subtext tech-icat-stat">
+                    In active federal criminal sex trafficking cases in 2020, among child victims recruited on social media where the platform was identified, 65% were recruited through Facebook, 14% through Instagram, and 8% through Snapchat.
+                    – <a href="https://traffickinginstitute.org/wp-content/uploads/2022/01/2020-Federal-Human-Trafficking-Report-Low-Res.pdf" target="_blank" rel="noopener noreferrer">Trafficking Institute</a>
+                </p>
+                <img
+                    src="visuals/social-platform-share.png"
+                    alt="Pie-style illustration showing platform share: 65 percent Facebook, 14 percent Instagram, 8 percent Snapchat"
+                    class="tech-platform-share-image"
+                    loading="lazy"
+                >
+                <div class="divider"></div>
+                <p class="section-subtext tech-icat-stat">
                     During the COVID-19 lockdown, the U.S. National Human Trafficking Hotline reported a 125% increase in reports of recruitment on Facebook and 95% increase in reports of recruitment on Instagram over the previous year.
                     – <a href="https://polarisproject.org/wp-content/uploads/2022/01/Human-Trafficking-Trends-in-2020-by-Polaris.pdf" target="_blank" rel="noopener noreferrer">Polaris</a>
-                </span>
+                </p>
                 <div class="platform-card fade-in">
                     <div class="icon facebook">f</div>
                     <div class="text">

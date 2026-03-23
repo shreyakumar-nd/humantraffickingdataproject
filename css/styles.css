@@ -200,6 +200,60 @@ a:hover {
     display: block;
 }
 
+/* Technology section: match size of section lead copy (e.g., "After Maya...") */
+.tech-icat-stat {
+    font-weight: 400;
+}
+
+.tech-icat-image {
+    display: block;
+    max-width: 55em; /* bigger than lead copy */
+    width: 100%;
+    height: auto;
+    margin: 1rem auto 0;
+}
+
+.tech-thorn-image {
+    display: block;
+    max-width: 36em;
+    width: 100%;
+    height: auto;
+    margin: 0.75rem auto 1rem;
+}
+
+.tech-platform-share-image {
+    display: block;
+    max-width: 44em;
+    width: 100%;
+    height: auto;
+    margin: 0.75rem auto 1.25rem;
+}
+
+.tech-scroll-crossfade {
+    position: relative;
+    width: min(100%, 48em);
+    aspect-ratio: 3 / 2;
+    margin: 1rem auto 1.5rem;
+    overflow: hidden;
+}
+
+.tech-crossfade-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 0.2s linear;
+}
+
+.tech-crossfade-image--first { opacity: 1; }
+.tech-crossfade-image--second { opacity: 0; }
+
+/* Technology section: slightly larger lead stat */
+.tech-2020-stat {
+    font-size: 1.35rem !important;
+}
+
 .stat-description {
     font-size: 1.4rem;
     color: #555555;
@@ -603,6 +657,11 @@ a:hover {
     color: #111111;
 }
 
+/* Technology heading: match "Bigger Than You Think" size */
+.technology-effect-title {
+    font-size: 2.5rem;
+}
+
 .moments-layout {
     position: relative;
     display: flex;
@@ -826,7 +885,7 @@ a:hover {
     display: flex;
     align-items: center;
     gap: 20px;
-    margin: 20px 0;
+    margin: 20px auto;
     padding: 18px 25px;
     background: #ffffff;
     border-radius: 14px;
