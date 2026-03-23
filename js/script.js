@@ -193,10 +193,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const BILL_COUNT = 48;
     const BILL_IMG = 'visuals/bill.png';
-    /** Stack completes in this fraction of scroll progress (lower = less scrolling to finish the stack) */
-    const STACK_PROGRESS_END = 0.48;
-    /** Mountain + bill crossfade uses the rest of the scroll — ends at 1 so there’s no dead scroll after */
-    const MOUNTAIN_FADE_START = 0.4;
+    /** Stack completes in this fraction of scroll progress (higher = more scrolling to finish the stack) */
+    const STACK_PROGRESS_END = 0.8;
+    /** Start mountain fade after most bills are in place so reveals feel slower */
+    const MOUNTAIN_FADE_START = 0.72;
     const MOUNTAIN_FADE_END = 1;
 
     /** Matches .wealth-mountain-img: max-width min(92vw, 560px) */
