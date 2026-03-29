@@ -543,6 +543,16 @@ a:hover {
     margin-top: 0;
 }
 
+/* Gaps in the Data card: gender pie illustration */
+.gender-gaps-pie-image {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    margin: 1.5rem auto 0;
+    border-radius: 8px;
+}
+
 /* FHT card: scroll crossfade (park walk → trust network); compact landscape frame */
 .profile-card-vertical .fht-trust-crossfade.tech-scroll-crossfade {
     width: min(100%, 420px);
