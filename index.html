@@ -378,13 +378,17 @@
             </div>
 
             <div class="news-article fade-in">
-                <img src="visuals/meta-newmexico.jpg" alt="Screenshot related to Meta New Mexico case" class="news-image">
+                <img src="visuals/meta-newmexico.png" alt="Screenshot related to Meta New Mexico case" class="news-image">
                 <span class="stat-large">
-                    In 2023 over the course of several months, the New Mexico Attorney General's Office carried out an undercover investigation of Meta's platforms, creating decoy accounts of children. 
+                    In 2023, the New Mexico Department of Justice (NMDOJ) initiated an investigation into Meta’s platforms to protect children from sexual abuse, online solicitation, and other harms.
                     – <a href="https://docs.google.com/document/d/1noQAik20cuIPDwxTcHFeWipCllbnBbaQYcM37U4mMHI/edit?tab=t.0" target="_blank" rel="noopener noreferrer">New Mexico’s lawsuit against Meta</a>
                 </span>
+                <p class="stat-large">
+                    On March 24, 2026, a jury found Meta liable for misleading consumers about the safety of its platforms and endangering children, ordering $375 million in civil penalties under New Mexico’s consumer protection laws.
+                    – <a href="https://nmdoj.gov/press-release/new-mexico-department-of-justice-wins-landmark-verdict-against-meta/" target="_blank" rel="noopener noreferrer">NMDOJ press release</a>
+                </p>
                 <p class="stat-description">
-                    They found that “Meta steered and connected users – including children – to sexually explicit, exploitative and child sex abuse materials and facilitated human trafficking within or affecting New Mexico”.
+                    NMDOJ argues evidence in the case showed Meta’s design features enabled predators to engage in child sexual exploitation and that the company ignored warnings about risks to children.
                 </p>
             </div>
         </div> 
@@ -425,14 +429,17 @@
 <!-- PROFILES SECTION -->
 <section id="profiles" class="section-dark">
     <div class="content">
-        <h2 class="fade-in">The People Affected</h2>
+        <h2 class="fade-in people-affected-title">The People Affected</h2>
         
-        <h3 class="fade-in">Who Are The Victims?</h3>
+        <h3 class="fade-in victims-subtitle">Who Are The Victims?</h3>
+        <p class="fade-in victim-profile-title victims-intro-text">
+            People want a checklist for who becomes a victim. Trafficking targets a moment: instability, isolation, need, conflict, money pressure.
+        </p>
         
         <!-- Card 1:  Profile -->
         <div class="profile-card-vertical fade-in">
             <div class="profile-type">Victim Profile</div>
-            <div class="profile-title">Nearly All Victims Are Girls — Average Age 15</div>
+            <div class="profile-title victim-profile-title">Nearly All Victims Are Girls — Average Age 15</div>
             <p class="profile-description">
                 In a review of 1,416 federal sex trafficking cases, 941 victims were identified. 
                 Nearly all (98.9%) were female, with an average age of just 15 years old at the time of exploitation.
@@ -449,6 +456,10 @@
                     <span class="age-number">15</span>
                     <span class="age-label">Average age</span>
                 </div>
+
+                <div class="girl-photo-circle" aria-hidden="true">
+                    <img src="visuals/victim-profile-circle.png" alt="" class="girl-photo-img" loading="lazy">
+                </div>
             </div>
         
             <p class="profile-description" style="margin-top: 1rem; font-size: 0.9rem;">
@@ -460,30 +471,32 @@
         <!-- Card 2: Known and Trusted with Dot Matrix -->
         <div class="profile-card-vertical fade-in">
             <div class="profile-type">Known and Trusted</div>
-            <div class="profile-title">45% knew their trafficker</div>
+            <div class="profile-title victim-profile-title">A Familiar Threat</div>
             <p class="profile-description">
-                More than half of identified minor victims were runaways. This isn't stranger danger, it's betrayal by someone familiar: a friend, romantic partner, or family member.
+                Of the identified minor victims 45.1% knew their trafficker, and 67.1% were runaways. This isn't stranger danger, it's betrayal by someone familiar: a friend, romantic partner, or family member.
             </p>
     
             <!-- DOT MATRIX VISUALIZATION -->
             <div class="dot-matrix-container">
-                <!-- Stats Header / Legend -->
-                <div class="dot-matrix-header">
-                    <div class="dot-legend">
-                        <div class="legend-number">50%+</div>
-                        <div class="legend-label">Runaways</div>
-                        <div class="legend-dot runaway-legend"></div>
+                <div class="dot-matrix-split">
+                    <div class="dot-stat-block">
+                        <div class="dot-legend">
+                            <div class="legend-number">45.1%</div>
+                            <div class="legend-label">Knew trafficker</div>
+                            <div class="legend-dot knew-legend"></div>
+                        </div>
+                        <div class="dot-grid small" data-fill-count="45" data-fill-class="knew-trafficker"></div>
                     </div>
-                    <div class="dot-legend">
-                        <div class="legend-number">45%</div>
-                        <div class="legend-label">Knew Trafficker</div>
-                        <div class="legend-dot knew-legend"></div>
+                    <div class="dot-stat-block">
+                        <div class="dot-legend">
+                            <div class="legend-number">67.1%</div>
+                            <div class="legend-label">Runaways</div>
+                            <div class="legend-dot runaway-legend"></div>
+                        </div>
+                        <div class="dot-grid small" data-fill-count="67" data-fill-class="runaway"></div>
                     </div>
                 </div>
-    
-                <!-- Dot Grid (10 x 10 = 100 dots) -->
-                <div class="dot-grid"></div>
-    
+
                 <p class="dot-caption">
                     Each dot represents 1% of identified minor victims.
                 </p>
@@ -498,7 +511,7 @@
         <!-- Card 3: Victims Become Criminals -->
         <div class="profile-card-vertical fade-in">
             <div class="profile-type">Victims Become Criminals</div>
-            <div class="profile-title">A System That Criminalizes Survivors</div>
+            <div class="profile-title victim-profile-title">A System That Criminalizes Survivors</div>
             <p class="profile-description">
                 62% of identified trafficking survivors reported being arrested or detained. Among those who were arrested, 
                 71% now carry a criminal record, and 90% said the crimes were committed under coercion while they were trafficked. 
@@ -563,6 +576,30 @@
                 <a href="https://www.state.gov/reports/2024-trafficking-in-persons-report/"
                 target="_blank" rel="noopener noreferrer">U.S. Department of State</a>
             </p>
+        </div>
+
+        <!-- Card: FHT quote — same profile-card-vertical style as criminalization block -->
+        <div class="profile-card-vertical fade-in">
+            <div class="profile-type">Trafficking Often Starts With Trust</div>
+            <div class="profile-title victim-profile-title">Trafficking Begins With Access</div>
+            <p class="profile-description fht-quote-block">
+                Trafficking rarely begins with kidnapping. Since 2000, only 0.2% of victims in federal human trafficking cases were kidnapped by their traffickers. More often, traffickers are people victims already know and trust. Trafficking often starts with manipulation, emotional control, false promises, or coercion, not an abduction. So Aisha’s job post isn’t random. Maya’s DM isn’t random. The target is vulnerability, and the tool is attention.
+                – <a href="https://traffickinginstitute.org/wp-content/uploads/2024/06/2023-Federal-Human-Trafficking-Report-WEB-Spreads-LR.pdf" target="_blank" rel="noopener noreferrer">FHT</a>
+            </p>
+            <div class="tech-scroll-crossfade fht-trust-crossfade fade-in" id="fhtTrustCrossfade" aria-hidden="true">
+                <img
+                    src="visuals/trafficking-trust-walk.png"
+                    alt=""
+                    class="tech-crossfade-image tech-crossfade-image--first"
+                    loading="lazy"
+                >
+                <img
+                    src="visuals/trafficking-trust-network.png"
+                    alt=""
+                    class="tech-crossfade-image tech-crossfade-image--second"
+                    loading="lazy"
+                >
+            </div>
         </div>
 
         <div class="divider"></div>
