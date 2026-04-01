@@ -460,28 +460,20 @@ initializeTechScrollCrossfades();
 /* ---------------PROFILES SECTION--------------- */
 // DOT MATRIX VISUALIZATION
 function initializeDotMatrix() {
-    const dotGrid = document.querySelector('.dot-grid');
-    if (!dotGrid) return;
+    const dotGrids = document.querySelectorAll('.dot-grid[data-fill-count][data-fill-class]');
+    if (!dotGrids.length) return;
 
-    dotGrid.innerHTML = '';
+    dotGrids.forEach((dotGrid) => {
+        dotGrid.innerHTML = '';
+        const fillCount = Number(dotGrid.getAttribute('data-fill-count')) || 0;
+        const fillClass = dotGrid.getAttribute('data-fill-class') || '';
 
-    for (let i = 1; i <= 50; i++) {
-        const dot = document.createElement('div');
-        dot.className = 'dot runaway';
-        dotGrid.appendChild(dot);
-    }
-
-    for (let i = 51; i <= 95; i++) {
-        const dot = document.createElement('div');
-        dot.className = 'dot knew-trafficker';
-        dotGrid.appendChild(dot);
-    }
-
-    for (let i = 96; i <= 100; i++) {
-        const dot = document.createElement('div');
-        dot.className = 'dot';
-        dotGrid.appendChild(dot);
-    }
+        for (let i = 1; i <= 100; i++) {
+            const dot = document.createElement('div');
+            dot.className = i <= fillCount ? `dot ${fillClass}` : 'dot';
+            dotGrid.appendChild(dot);
+        }
+    });
 }
 
 if (document.readyState === 'loading') {
