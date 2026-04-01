@@ -83,16 +83,25 @@ section.section-black:first-of-type .content {
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #555555;
+    color: var(--red);
     margin: 0 0 0.75rem;
 }
 
+.hero-site-subtitle {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--black);
+    margin: 0 0 0.75rem;
+}
 h1 {
     font-size: 49px;
     margin-bottom: 15px;
     font-weight: 700;
     color: #111111;
     letter-spacing: -1px;
+    margin-top: 15vh;
 }
 
 .hero-subheading {
@@ -474,6 +483,11 @@ a:hover {
     color: #111111 !important;
 }
 
+/* Hero project line is <p> inside .section-black; beat .section-black p !important above */
+.section-black .hero-site-title {
+    color: var(--red) !important;
+}
+
 /* FADE IN ANIMATIONS */
 .fade-in {
     opacity: 0;
@@ -621,6 +635,89 @@ a:hover {
 
 .stat-visual {
     text-align: center;
+}
+
+/* HOTLINE STICKY SCROLL SECTION */
+.hotline-scroll-section {
+    position: relative;
+    height: 250vh;
+}
+
+.hotline-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    padding: 0 20px;
+}
+
+/* Match hotline intro to profiles lead lines (same as hero-subheading scale) */
+#profiles .content > .section-subtext,
+.hotline-sticky .section-subtext {
+    font-size: 19px;
+    line-height: 1.8;
+    color: #444444;
+}
+
+.profiles-hotline-bridge {
+    margin-top: 1.5rem;
+}
+
+.hotline-sub {
+    margin-bottom: 3rem;
+}
+
+.hotline-image-wrapper {
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+}
+
+.hotline-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.hotline-number {
+    position: absolute;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-align: center;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(15px);
+}
+
+.hotline-cases {
+    top: 5%;
+    left: 4.5%;
+    width: 24%;
+    height: 28%;
+    font-size: clamp(1.2rem, 3vw, 2.6rem);
+}
+
+.hotline-victims {
+    top: 5%;
+    right: 3%;
+    width: 24%;
+    height: 28%;
+    font-size: clamp(1.2rem, 3vw, 2.6rem);
+}
+
+.hotline-year {
+    margin-top: 3rem;
+    font-size: 0.95rem;
+    color: #666666;
+    font-style: italic;
+    letter-spacing: 0.05em;
 }
 
 /* THREE MOMENTS THAT LOOK NORMAL */
@@ -1040,19 +1137,65 @@ section .content h2 {
     transform: translateY(0);
 }
 
-.person {
-    font-size: 1.8rem;
-    transition: transform 0.3s ease, color 0.3s ease;
+.pictograph-cell {
+    width: 100%;
+    max-width: 1.75rem;
+    aspect-ratio: 1;
+    border-radius: 3px;
+    justify-self: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.person:hover {
-    transform: scale(1.2);
+.pictograph-cell--marked {
+    background: var(--red);
+    box-shadow: 0 1px 3px rgba(230, 57, 70, 0.35);
+}
+
+.pictograph-cell--neutral {
+    background: #d5d5d5;
+}
+
+.pictograph-cell:hover {
+    transform: scale(1.12);
 }
 
 .two-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
+}
+
+/* Hospitality: nested section must not use full viewport height (eats space above cards) */
+#hospitality-cards {
+    min-height: auto;
+    display: block;
+    padding: 0.75rem 0 1.5rem;
+    margin-top: 50px;
+}
+
+#hospitality-cards .profile-grid {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#hospitality .two-col {
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 0.25rem;
+}
+
+#hospitality .two-col > div:first-child {
+    text-align: center;
+}
+
+/* Match main body copy (1.2rem / 1.8); tight margin inside pictograph row */
+#hospitality .hospitality-travel-caption {
+    margin: 0;
+    font-weight: 400;
+}
+
+#hospitality .hospitality-state-stats {
+    margin-top: 50px;
 }
 
 /* GIRL VISUAL */
@@ -1781,7 +1924,7 @@ section .content h2 {
     order: -1;
     font-size: 2.5rem;
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: 50px;
     text-align: center;
 }
 

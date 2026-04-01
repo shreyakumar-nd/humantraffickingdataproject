@@ -30,7 +30,7 @@ updateBottomNav();
 // SCROLL EVENTS
 window.addEventListener('scroll', () => {
     checkFadeIn();
-    updateRollingNumber();
+    updateHotlineNumbers();
     checkSilhouettes();
     updateBottomNav();
     updateThreeMoments();
@@ -195,6 +195,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const BILL_IMG = 'visuals/bill.png';
     /** Stack completes in this fraction of scroll progress (higher = more scrolling to finish the stack) */
     const STACK_PROGRESS_END = 0.8;
+    /** First bill drops in early, then hold before others start sliding */
+    const FIRST_BILL_DROP_END = 0.1;
+    const OTHER_BILLS_START = 0.16;
     /** Start mountain fade after most bills are in place so reveals feel slower */
     const MOUNTAIN_FADE_START = 0.72;
     const MOUNTAIN_FADE_END = 1;
@@ -242,9 +245,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
         bills.forEach((bill, i) => {
             const fromLeft = i % 2 === 0;
-            const span = stackCap / BILL_COUNT;
-            const t0 = (i / BILL_COUNT) * stackCap;
-            const raw = span > 0 ? (progress - t0) / span : 1;
+            let raw = 1;
+
+            if (i === 0) {
+                const firstSpan = Math.max(0.0001, FIRST_BILL_DROP_END);
+                raw = progress / firstSpan;
+            } else {
+                const trailingCount = BILL_COUNT - 1;
+                const trailingRange = Math.max(0.0001, stackCap - OTHER_BILLS_START);
+                const span = trailingRange / trailingCount;
+                const t0 = OTHER_BILLS_START + ((i - 1) / trailingCount) * trailingRange;
+                raw = span > 0 ? (progress - t0) / span : 1;
+            }
+
             const local = smoothstep(raw);
             const slide =
                 i === 0 ? 0 : (1 - local) * maxSlide * (fromLeft ? -1 : 1);
@@ -503,21 +516,29 @@ function drawPieChart(canvasId, femalePercent) {
 }
 
 window.addEventListener("load", () => {
-    drawPieChart("pieAll", 9);
-    drawPieChart("pieChild", 6);
+    drawPieChart("pieAll", 8.8);
+    drawPieChart("pieChild", 5.9);
 });
 
-/* ---------------SCROLLING STAT SECTION--------------- */
-// ROLLING NUMBER EFFECT
-function updateRollingNumber() {
-    const numberEl = document.getElementById('rollingNumber');
-    const scrolled = window.scrollY;
-    const stickyStart = document.querySelector('.sticky-section').offsetTop;
-    const progress = Math.max(0, scrolled - stickyStart) / 1000;
-    
-    const targetNumber = 21865; 
-    const currentNumber = Math.min(Math.floor(progress * targetNumber), targetNumber);
-    numberEl.textContent = `[${currentNumber}]`;
+/* ---------------HOTLINE STATS SECTION--------------- */
+function updateHotlineNumbers() {
+    const section = document.querySelector('.hotline-scroll-section');
+    if (!section) return;
+
+    const casesEl = document.getElementById('hotlineCases');
+    const victimsEl = document.getElementById('hotlineVictims');
+    if (!casesEl || !victimsEl) return;
+
+    const rect = section.getBoundingClientRect();
+    const scrollable = section.offsetHeight - window.innerHeight;
+    const progress = scrollable <= 0 ? 0 : Math.max(0, Math.min(1, -rect.top / scrollable));
+
+    const ease = 1 - Math.pow(1 - progress, 3);
+    const cases = Math.floor(ease * 112822);
+    const victims = Math.floor(ease * 218568);
+
+    casesEl.textContent = cases.toLocaleString();
+    victimsEl.textContent = victims.toLocaleString();
 }
 
 /* ---------------HOSPITALITY SECTION--------------- */
@@ -528,10 +549,18 @@ function updateRollingNumber() {
     const filled = 75;
 
     for (let i = 0; i < total; i++) {
-        const icon = document.createElement('div');
-        icon.textContent = i < filled ? '👤' : '⚫️';
-        pictograph.appendChild(icon);
+        const cell = document.createElement('div');
+        cell.className =
+            'pictograph-cell' +
+            (i < filled ? ' pictograph-cell--marked' : ' pictograph-cell--neutral');
+        cell.setAttribute('aria-hidden', 'true');
+        pictograph.appendChild(cell);
     }
+    pictograph.setAttribute('role', 'img');
+    pictograph.setAttribute(
+        'aria-label',
+        'Grid of one hundred units: seventy-five shown in red for survivors who encountered hotels, twenty-five neutral.'
+    );
 
     window.addEventListener('scroll', () => {
         const rect = pictograph.getBoundingClientRect();
