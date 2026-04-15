@@ -27,14 +27,20 @@ function updateBottomNav() {
 checkFadeIn();
 checkSilhouettes();
 updateBottomNav();
-// SCROLL EVENTS
-window.addEventListener('scroll', () => {
-    checkFadeIn();
-    updateHotlineNumbers();
-    checkSilhouettes();
-    updateBottomNav();
-    updateThreeMoments();
-});
+// SCROLL EVENTS — one rAF per frame (avoids dozens of heavy handlers firing per scroll tick)
+let scrollRaf = null;
+function onScrollRaf() {
+    if (scrollRaf != null) return;
+    scrollRaf = requestAnimationFrame(() => {
+        scrollRaf = null;
+        checkFadeIn();
+        updateHotlineNumbers();
+        checkSilhouettes();
+        updateBottomNav();
+        updateThreeMoments();
+    });
+}
+window.addEventListener('scroll', onScrollRaf, { passive: true });
 
 /* ---------------THREE MOMENTS SECTION--------------- */
 const MOMENTS_DATA = [
@@ -42,6 +48,9 @@ const MOMENTS_DATA = [
     { img: 'visuals/person6.png', name: 'Jayden', age: '13', header: "Jayden's Phone", messageId: 'momentsMessageJayden' },
     { img: 'visuals/person2.png', name: 'Aisha', age: '22', header: "Aisha's Phone", messageId: 'momentsMessageAisha' }
 ];
+
+/** Avoid resetting img.src every scroll frame (causes decode/lag). */
+let threeMomentsLastIndex = -1;
 
 function updateThreeMoments() {
     const section = document.getElementById('three-moments');
@@ -79,16 +88,19 @@ function updateThreeMoments() {
     if (progress >= 0.62) activeIndex = 2;
     else if (progress >= 0.31) activeIndex = 1;
 
-    const data = MOMENTS_DATA[activeIndex];
-    personaImg.src = data.img;
-    personaImg.alt = data.name;
-    personaName.textContent = data.name;
-    personaAge.textContent = `Age ${data.age}`;
-    phoneHeader.textContent = data.header;
+    if (activeIndex !== threeMomentsLastIndex) {
+        threeMomentsLastIndex = activeIndex;
+        const data = MOMENTS_DATA[activeIndex];
+        personaImg.src = data.img;
+        personaImg.alt = data.name;
+        personaName.textContent = data.name;
+        personaAge.textContent = `Age ${data.age}`;
+        phoneHeader.textContent = data.header;
 
-    document.getElementById('momentsMessageMaya').classList.toggle('visible', activeIndex === 0);
-    document.getElementById('momentsMessageJayden').classList.toggle('visible', activeIndex === 1);
-    document.getElementById('momentsMessageAisha').classList.toggle('visible', activeIndex === 2);
+        document.getElementById('momentsMessageMaya').classList.toggle('visible', activeIndex === 0);
+        document.getElementById('momentsMessageJayden').classList.toggle('visible', activeIndex === 1);
+        document.getElementById('momentsMessageAisha').classList.toggle('visible', activeIndex === 2);
+    }
 
     if (progress >= 0.92) {
         tagline.classList.add('visible');
@@ -180,7 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    window.addEventListener("scroll", revealYearBlocks);
+    window.addEventListener("scroll", revealYearBlocks, { passive: true });
     revealYearBlocks();
 });
 // $236B: bills slide from alternate sides into a stack, then mountain2 + stat
@@ -354,7 +366,16 @@ if (webCanvas) {
         drawSpiderWeb(progress);
     }
 
-    window.addEventListener("scroll", updateWeb);
+    let webRaf = null;
+    function scheduleWebDraw() {
+        if (webRaf != null) return;
+        webRaf = requestAnimationFrame(() => {
+            webRaf = null;
+            updateWeb();
+        });
+    }
+
+    window.addEventListener("scroll", scheduleWebDraw, { passive: true });
     updateWeb();
 }
 // AD BAR
@@ -392,7 +413,7 @@ function updateAdBar() {
     });
 }
 
-window.addEventListener("scroll", updateAdBar);
+window.addEventListener("scroll", updateAdBar, { passive: true });
 window.addEventListener("load", updateAdBar);
 // PLATFORM CARDS
 function activatePlatformCards() {
@@ -409,7 +430,7 @@ function activatePlatformCards() {
         }
     });
 }
-window.addEventListener('scroll', activatePlatformCards);
+window.addEventListener('scroll', activatePlatformCards, { passive: true });
 window.addEventListener('load', activatePlatformCards);
 
 // Technology image scroll crossfades
@@ -513,6 +534,9 @@ window.addEventListener("load", () => {
 });
 
 /* ---------------HOTLINE STATS SECTION--------------- */
+let hotlineLastCases = -1;
+let hotlineLastVictims = -1;
+
 function updateHotlineNumbers() {
     const section = document.querySelector('.hotline-scroll-section');
     if (!section) return;
@@ -529,8 +553,14 @@ function updateHotlineNumbers() {
     const cases = Math.floor(ease * 112822);
     const victims = Math.floor(ease * 218568);
 
-    casesEl.textContent = cases.toLocaleString();
-    victimsEl.textContent = victims.toLocaleString();
+    if (cases !== hotlineLastCases) {
+        hotlineLastCases = cases;
+        casesEl.textContent = cases.toLocaleString();
+    }
+    if (victims !== hotlineLastVictims) {
+        hotlineLastVictims = victims;
+        victimsEl.textContent = victims.toLocaleString();
+    }
 }
 
 /* ---------------HOSPITALITY SECTION--------------- */
@@ -559,5 +589,5 @@ function updateHotlineNumbers() {
         if (rect.top < window.innerHeight - 100) {
             pictograph.classList.add('show');
         }
-    });
+    }, { passive: true });
 })();
