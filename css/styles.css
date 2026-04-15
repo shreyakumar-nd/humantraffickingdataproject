@@ -2436,3 +2436,69 @@ section .content h2 {
 .shelter-spike-source a {
     color: var(--red);
 }
+
+/* TAKE ACTION SECTION */
+.take-action-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.take-action-card {
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+    padding: 1.4rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    min-height: 230px;
+}
+
+.take-action-card h3 {
+    font-size: 1.45rem;
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 0.75rem;
+}
+
+.take-action-card p {
+    color: #333333;
+    font-size: 1.05rem;
+    margin-bottom: 1.15rem;
+}
+
+.take-action-link {
+    margin-top: auto;
+    display: inline-block;
+    text-decoration: none !important;
+    font-weight: 600;
+    color: #ffffff !important;
+    background: var(--red);
+    border: 1px solid var(--red);
+    border-radius: 8px;
+    padding: 0.6rem 0.9rem;
+    text-align: center;
+    transition: background-color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.take-action-link:visited,
+.take-action-link:focus,
+.take-action-link:active {
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+.take-action-link:hover {
+    background: #c92f3c;
+    border-color: #c92f3c;
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+@media (max-width: 1024px) {
+    .take-action-grid {
+        grid-template-columns: 1fr;
+    }
+}
