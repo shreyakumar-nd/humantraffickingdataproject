@@ -722,7 +722,7 @@ a:hover {
     position: absolute;
     font-family: 'Playfair Display', Georgia, serif;
     font-weight: 700;
-    color: #1a1a1a;
+    color: #303030;
     text-align: center;
     line-height: 1;
     display: flex;
@@ -733,7 +733,7 @@ a:hover {
 
 .hotline-cases {
     top: 5%;
-    left: 4.5%;
+    left: calc(4.5% - 22px);
     width: 24%;
     height: 28%;
     font-size: clamp(1.2rem, 3vw, 2.6rem);
@@ -741,7 +741,7 @@ a:hover {
 
 .hotline-victims {
     top: 5%;
-    right: 3%;
+    right: calc(3% - 5px);
     width: 24%;
     height: 28%;
     font-size: clamp(1.2rem, 3vw, 2.6rem);
