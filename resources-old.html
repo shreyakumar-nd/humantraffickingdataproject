@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Library | Human Trafficking Awareness</title>
+    <link rel="stylesheet" href="css/styles.css?v=20260330c">
+    <style>
+        body {
+            background: #f5f5f5;
+            color: #111111;
+            padding-bottom: 0;
+        }
+
+        .resources-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3.5rem 1.25rem 4rem;
+        }
+
+        .resources-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .resources-header h1 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: clamp(2rem, 4vw, 3rem);
+            letter-spacing: -0.02em;
+        }
+
+        .resources-header p {
+            margin: 0 auto;
+            max-width: 760px;
+            color: #444444;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-auto-rows: 1fr;
+            gap: 1.25rem;
+            margin-top: 2rem;
+        }
+
+        .resource-card {
+            background: #ffffff;
+            border: 1px solid #e6e6e6;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            min-height: 390px;
+            height: 100%;
+        }
+
+        .resource-card-upper {
+            min-height: 170px;
+            padding: 1rem;
+            background: #fafafa;
+            border-bottom: 1px solid #ededed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .resource-card-upper img {
+            max-width: 190px;
+            max-height: 95px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .resource-card-lower {
+            padding: 1.1rem 1rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            height: 100%;
+        }
+
+        .resource-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #333333;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        .resource-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #e63946;
+            color: #ffffff !important;
+            border: 1px solid #e63946;
+            border-radius: 10px;
+            font-size: 0.96rem;
+            font-weight: 600;
+            text-decoration: none !important;
+            padding: 0.7rem 1rem;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .resource-btn:hover {
+            background: #bb111f;
+            border-color: #bb111f;
+            color: #ffffff !important;
+            transform: translateY(-1px);
+        }
+
+        .resource-btn:focus,
+        .resource-btn:active,
+        .resource-btn:visited {
+            color: #ffffff !important;
+        }
+
+        .resources-home-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            font-weight: 600;
+            text-decoration: none !important;
+        }
+    </style>
+</head>
+<body>
+    <main class="resources-page">
+        <header class="resources-header">
+            <h1>Resources & Reporting Tools</h1>
+            <p>Explore trusted organizations, reporting portals, training resources, and research to better understand online exploitation and human trafficking prevention.</p>
+            <a class="resources-home-link" href="index.html">&larr; Back to Home</a>
+        </header>
+
+        <section class="resources-grid" aria-label="Resource links">
+            <article class="resource-card">
+                <div class="resource-card-upper" style="background: #404040;">
+                    <img src="visuals/logos/missing_exploited.png" alt="National Center for Missing and Exploited Children logo">
+                </div>
+                <div class="resource-card-lower">
+                    <p class="resource-description">Learn what sextortion is, how it happens, warning signs to watch for, and what immediate steps victims, families, and supporters can take to report abuse and get help.</p>
+                    <a class="resource-btn" href="https://www.missingkids.org/theissues/sextortion" target="_blank" rel="noopener noreferrer">Visit Resource</a>
+                </div>
+            </article>
+
+            <article class="resource-card">
+                <div class="resource-card-upper" style="background: #ffffff;">
+                    <img src="visuals/logos/thorn.png" alt="Thorn logo">
+                </div>
+                <div class="resource-card-lower">
+                    <p class="resource-description">Read an overview of sextortion that combines research findings and survivor-informed context, including how offenders use coercion, non-consensual image capture, and online platforms to exploit victims.</p>
+                    <a class="resource-btn" href="https://www.thorn.org/blog/the-growing-threat-of-sextortion/" target="_blank" rel="noopener noreferrer">Visit Resource</a>
+                </div>
+            </article>
+
+            <article class="resource-card">
+                <div class="resource-card-upper" style="background: #f6f6f6;">
+                    <img src="visuals/logos/cyber_tip_line.png" alt="CyberTipline logo">
+                </div>
+                <div class="resource-card-lower">
+                    <p class="resource-description">Submit a report of suspected child sexual exploitation through NCMEC's CyberTipline and access reporting support and additional help resources.</p>
+                    <a class="resource-btn" href="https://report.cybertip.org/" target="_blank" rel="noopener noreferrer">Visit Resource</a>
+                </div>
+            </article>
+
+            <article class="resource-card">
+                <div class="resource-card-upper" style="background: #ffffff;">
+                    <img src="visuals/logos/thorn.png" alt="Thorn logo">
+                </div>
+                <div class="resource-card-lower">
+                    <p class="resource-description">Explore Thorn's victim identification tools and partnerships that help investigators, digital forensic platforms, and law enforcement identify child victims in CSAM cases more quickly.</p>
+                    <a class="resource-btn" href="https://www.thorn.org/solutions/victim-identification/" target="_blank" rel="noopener noreferrer">Visit Resource</a>
+                </div>
+            </article>
+
+            <article class="resource-card">
+                <div class="resource-card-upper" style="background: #404040;">
+                    <img src="visuals/logos/missing_exploited.png" alt="National Center for Missing and Exploited Children logo">
+                </div>
+                <div class="resource-card-lower">
+                    <p class="resource-description">Find step-by-step instructions for reporting explicit images or videos to major platforms and requesting removal of sexual content involving minors or non-consensual sharing.</p>
+                    <a class="resource-btn" href="https://www.missingkids.org/gethelpnow/isyourexplicitcontentoutthere" target="_blank" rel="noopener noreferrer">Visit Resource</a>
+                </div>
+            </article>
+
+            <article class="resource-card">
+                <div class="resource-card-upper" style="background: #ffffff;">
+                    <img src="visuals/logos/ahla.png" alt="AHLA Foundation logo">
+                </div>
+                <div class="resource-card-lower">
+                    <p class="resource-description">Access free anti-trafficking training for the hotel and lodging industry, with courses focused on recognizing warning signs, responding appropriately, and strengthening prevention efforts.</p>
+                    <a class="resource-btn" href="https://www.ahlafoundation.org/nrft/" target="_blank" rel="noopener noreferrer">Visit Resource</a>
+                </div>
+            </article>
+
+            <article class="resource-card">
+                <div class="resource-card-upper" style="background: #ffffff;">
+                    <img src="visuals/logos/modern_slavery.png" alt="Global Modern Slavery logo">
+                </div>
+                <div class="resource-card-lower">
+                    <p class="resource-description">Browse a searchable resource library with research, reports, webinars, and training materials on human trafficking, child labor, survivor services, prevention, and related justice issues.</p>
+                    <a class="resource-btn" href="https://globalmodernslavery.org/resources/" target="_blank" rel="noopener noreferrer">Visit Resource</a>
+                </div>
+            </article>
+
+            <article class="resource-card">
+                <div class="resource-card-upper" style="background: #1a4480;">
+                    <img src="visuals/logos/national_justice.png" alt="National Institute of Justice logo">
+                </div>
+                <div class="resource-card-lower">
+                    <p class="resource-description">Learn why human trafficking data is often undercounted, including challenges in identifying incidents, inconsistent reporting practices, and gaps in law enforcement data collection.</p>
+                    <a class="resource-btn" href="https://nij.ojp.gov/topics/articles/gaps-reporting-human-trafficking-incidents-result-significant-undercounting" target="_blank" rel="noopener noreferrer">Visit Resource</a>
+                </div>
+            </article>
+
+            <article class="resource-card">
+                <div class="resource-card-upper" style="background: #ffffff;">
+                    <img src="visuals/logos/protect_children.png" alt="Protect Children organization logo">
+                </div>
+                <div class="resource-card-lower">
+                    <p class="resource-description">Review research on risk factors linked to CSAM users contacting children online, including patterns of use, exposure history, and other behaviors associated with higher risk.</p>
+                    <a class="resource-btn" href="https://www.suojellaanlapsia.fi/en/post/risk-factors-for-child-sexual-abuse-material-users-contacting-children-online" target="_blank" rel="noopener noreferrer">Visit Resource</a>
+                </div>
+            </article>
+        </section>
+    </main>
+</body>
+</html>
