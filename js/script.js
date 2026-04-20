@@ -46,7 +46,7 @@ window.addEventListener('scroll', onScrollRaf, { passive: true });
 const MOMENTS_DATA = [
     { img: 'visuals/person1.png', name: 'Maya', age: '15', header: "Maya's Phone", messageId: 'momentsMessageMaya' },
     { img: 'visuals/person6.png', name: 'Jayden', age: '13', header: "Jayden's Phone", messageId: 'momentsMessageJayden' },
-    { img: 'visuals/person2.png', name: 'Aisha', age: '22', header: "Aisha's Phone", messageId: 'momentsMessageAisha' }
+    { img: 'visuals/person2.png', name: 'Aisha', age: '17', header: "Aisha's Phone", messageId: 'momentsMessageAisha' }
 ];
 
 /** Avoid resetting img.src every scroll frame (causes decode/lag). */
