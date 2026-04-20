@@ -280,10 +280,22 @@
 
         .ht-resource-library .resources-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: 1fr;
             grid-auto-rows: 1fr;
             gap: 1.25rem;
             margin-top: 0;
+        }
+
+        @media (min-width: 576px) {
+            .ht-resource-library .resources-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 992px) {
+            .ht-resource-library .resources-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
 
         .ht-resource-library .library-resource-card {

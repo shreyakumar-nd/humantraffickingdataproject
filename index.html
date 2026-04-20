@@ -943,8 +943,33 @@
     <script>
         (function () {
             'use strict';
+            var STORAGE_KEY = 'ht-content-consent-at';
+            var FIVE_MIN_MS = 5 * 60 * 1000;
             var dlg = document.getElementById('content-consent-dialog');
             if (!dlg) return;
+
+            function consentTimestamp() {
+                try {
+                    var raw = localStorage.getItem(STORAGE_KEY);
+                    if (!raw) return null;
+                    var t = parseInt(raw, 10);
+                    return isNaN(t) ? null : t;
+                } catch (e) {
+                    return null;
+                }
+            }
+
+            function saveConsentTimestamp() {
+                try {
+                    localStorage.setItem(STORAGE_KEY, String(Date.now()));
+                } catch (e) { /* storage unavailable */ }
+            }
+
+            function consentStillFresh() {
+                var t = consentTimestamp();
+                if (t == null) return false;
+                return (Date.now() - t) < FIVE_MIN_MS;
+            }
 
             function lockConsentScroll() {
                 document.documentElement.classList.add('consent-scroll-lock');
@@ -953,10 +978,16 @@
                 document.documentElement.classList.remove('consent-scroll-lock');
             }
 
-            dlg.addEventListener('close', unlockConsentScroll);
+            dlg.addEventListener('close', function () {
+                unlockConsentScroll();
+                saveConsentTimestamp();
+            });
             dlg.addEventListener('cancel', function (e) {
                 e.preventDefault();
             });
+            if (consentStillFresh()) {
+                return;
+            }
             if (typeof dlg.showModal === 'function') {
                 lockConsentScroll();
                 dlg.showModal();

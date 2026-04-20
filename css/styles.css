@@ -4,7 +4,7 @@
     --black: #111111;
 }
 
-/* Full-page consent gate: shown on every load until user submits consent */
+/* Full-page consent gate; index.html skips for ~5 min after consent (localStorage). */
 .content-consent-dialog {
     position: fixed;
     top: 50%;
