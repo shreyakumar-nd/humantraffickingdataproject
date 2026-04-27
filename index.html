@@ -137,23 +137,28 @@
     <section id="technology" class="section-light">
         <div class="content">
             <h2 class="fade-in technology-effect-title">Technology Exacerbates Existing Problems</h2>
-            <p class="fade-in section-subtext">
-                If you asked Maya where it started, she might say loneliness. <br>If you asked where it moved, she’d point to her phone.
+            <p class="fade-in section-subtext tech-2020-stat">
+                1 in 4 young people report being sexually solicited online before turning 18 —
+                <a href="https://www.thorn.org/press-releases/new-research-1-in-4-young-people-report-receiving-a-commercial-sexual-solicitation-online-before-turning-18" target="_blank" rel="noopener noreferrer">
+                    Thorn, Commodified Sexual Interactions Involving Minors, p. 17
+                </a>
             </p>
+ 
             <img
                 src="visuals/thorn-1-in-4.png"
                 alt="Illustration of youth online interaction risk"
                 class="tech-thorn-image fade-in"
                 loading="lazy"
             >
-            <p class="fade-in section-subtext tech-2020-stat">
-                1 in 4 young people report being sexually solicited online before turning 18 — 
-                <a href="https://www.thorn.org/press-releases/new-research-1-in-4-young-people-report-receiving-a-commercial-sexual-solicitation-online-before-turning-18/?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">Thorn</a>.
+            <p class="fade-in section-subtext">
+                These connections often begin with requests for friendship, companionship, playing online games, all healthy, wholesome aspects of growing up but imperiled by anonymity that technology and internet enables.
             </p>
             <div class="divider"></div>
             <p class="fade-in section-subtext tech-icat-stat">
-                More than 6 in 10 (66%) children with internet access interact daily online with people they don’t know.
-                – <a href="https://www.savethechildren.net/news/two-thirds-children-interact-daily-online-people-they-dont-know-despite-grooming-fears-report" target="_blank" rel="noopener noreferrer">Save the Children</a>
+                More than 6 in 10 (66%) children with internet access interact daily online with people they don’t know —
+                <a href="https://resourcecentre.savethechildren.net/pdf/REPORT_PROTECTING-CHILDREN_FINAL.pdf" target="_blank" rel="noopener noreferrer">
+                    Save the Children, Protecting Children From Online Grooming, p. 8
+                </a>
             </p>
             <div class="tech-scroll-crossfade fade-in" id="techScrollCrossfade" aria-hidden="true">
                 <img
@@ -170,9 +175,12 @@
                 >
             </div>
             <div class="divider"></div>
+            <p class="fade-in section-subtext">
+                Generative AI (Gen AI) can produce new text, images, audio, or video from prompts—so it can fuel believable personas, scaled grooming-style contact, and synthetic or altered sexual depictions of minors in the same DMs, games, and feeds this project examines. 
+            </p>
             <p class="fade-in section-subtext tech-icat-stat">
                 From Jan 1 to Jun 30, 2025, the National Center for Missing &amp; Exploited Children (NCMEC) reports that generative artificial intelligence (AI) related CyberTipline reports surged year over year from 6,835 to 440,419.
-                – <a href="https://www.missingkids.org/blog/2025/spike-in-online-crimes-against-children-a-wake-up-call?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">NCMEC</a>
+                – <a href="https://www.missingkids.org/blog/2025/spike-in-online-crimes-against-children-a-wake-up-call" target="_blank" rel="noopener noreferrer">NCMEC</a>
             </p>
             <div class="tech-scroll-crossfade fade-in" id="techAiCrossfade" aria-hidden="true">
                 <img
@@ -191,8 +199,11 @@
             <div class="divider"></div>
                 <div class="fade-in">
                 <p class="section-subtext tech-icat-stat">
-                    The National Center for Missing and Exploited Children in the United States reported an 846% increase from 2010 to 2015 in reports of suspected child sex trafficking – an increase the organization has found to be ‘directly correlated to the increased use of the Internet to sell children for sex.’
-                    – <a href="https://icat.un.org/sites/g/files/tmzbdl461/files/human_trafficking_and_technology_trends_challenges_and_opportunities_web.pdf" target="_blank" rel="noopener noreferrer">Inter-Agency Coordination Group against Trafficking in Persons (ICAT)</a>
+                    The National Center for Missing and Exploited Children in the United States reported an 846% increase from 2010 to 2015 in reports of suspected child sex trafficking – an increase the organization has found to be "directly correlated to the increased use of the Internet to sell children for sex."
+                    —
+                    <a href="https://www.hsgac.senate.gov/wp-content/uploads/imo/media/doc/Souras%20Testimony%20-%20PSI%202015-11-19.pdf" target="_blank" rel="noopener noreferrer">
+                        NCMEC testimony to the U.S. Senate, p. 2
+                    </a>
                 </p>
                 <img
                     src="visuals/icat-846.png"
@@ -944,7 +955,7 @@
         (function () {
             'use strict';
             var STORAGE_KEY = 'ht-content-consent-at';
-            var FIVE_MIN_MS = 5 * 60 * 1000;
+            var ONE_HOUR_MS = 60 * 60 * 1000;
             var dlg = document.getElementById('content-consent-dialog');
             if (!dlg) return;
 
@@ -968,7 +979,7 @@
             function consentStillFresh() {
                 var t = consentTimestamp();
                 if (t == null) return false;
-                return (Date.now() - t) < FIVE_MIN_MS;
+                return (Date.now() - t) < ONE_HOUR_MS;
             }
 
             function lockConsentScroll() {
